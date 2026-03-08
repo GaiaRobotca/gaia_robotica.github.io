@@ -53,28 +53,34 @@
   .post-recente-thumb { width: 80px; height: 60px; border-radius: 4px; object-fit: cover; border: 1px solid var(--border); }
   .post-recente-titulo { font-family: 'Barlow', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--blue); line-height: 1.3; }
 
-  /* Conteúdo Principal e Imagens Proporcionais */
+  /* ========================================================
+     NOVA CONFIGURAÇÃO DE IMAGENS (Problema do Zoom Resolvido)
+     ======================================================== */
+  .main-image {
+    text-align: center; /* Centra a imagem se ela for mais estreita que o texto */
+    margin-bottom: 3rem;
+  }
+  
   .main-image img { 
-    width: 100%; 
-    height: 450px; /* Mantém a altura fixa para não crescer infinitamente */
-    object-fit: cover; 
-    object-position: center;
+    max-width: 100%; 
+    max-height: 500px; /* Impede que a foto ocupe o ecrã inteiro em altura */
+    height: auto; /* Mantém a proporção original sem esticar nem cortar */
+    object-fit: contain; /* Mostra a imagem inteira dentro do limite */
     border-radius: 8px; 
-    margin-bottom: 3rem; 
     border: 2px solid var(--border); 
-    background-color: var(--surface); 
+    background-color: #0a192f; /* Fundo escuro elegante para o espaço que sobrar */
   }
   
   .inline-img { 
-    width: 100%; 
-    max-height: 450px; /* A MAGIA ACONTECE AQUI: Impede a imagem de ficar gigante */
-    object-fit: cover; /* Corta a imagem como um banner bonito */
-    object-position: center 20%; /* Foca na parte de cima/centro (onde estão as caras) */
+    max-width: 100%; 
+    max-height: 400px; /* Limite de altura seguro */
+    height: auto; /* Mantém a proporção original */
+    object-fit: contain; /* Não corta a imagem */
     border-radius: 8px; 
-    margin: 1.5rem 0; 
+    margin: 1.5rem auto; /* Centra a imagem com margem em cima e em baixo */
     border: 1px solid var(--border); 
-    background-color: var(--surface); 
-    display: block;
+    background-color: #0a192f;
+    display: block; /* Necessário para o margin auto funcionar */
   }
   
   .article-content h2{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:900;color:var(--blue-dark);text-transform:uppercase;margin:3rem 0 1rem;border-bottom:2px solid var(--surface);padding-bottom:0.5rem;}
@@ -93,7 +99,7 @@
     width: 100%; 
     border-radius: 8px; 
     position: relative; 
-    background: #0a192f; /* Fundo azul escuro cinemático */
+    background: #0a192f; 
     border: 2px solid var(--blue-deep);
   }
   
@@ -102,7 +108,7 @@
   .carousel-slide { 
     min-width: 100%; 
     height: 500px; 
-    object-fit: contain; /* Impede a imagem de ser cortada, mostrando-a inteira no fundo escuro */
+    object-fit: contain; 
   }
   
   .carousel-btn { 
@@ -196,7 +202,7 @@
         <p>Durante o evento, a pressão era constante. A competição exigia não apenas que o drone voasse, mas que operasse com autonomia, navegasse por coordenadas, reconhecesse alvos no solo e realizasse o acionamento de mecanismos (como a nossa garra mecânica) no tempo exato. A estabilidade do sinal de telemetria e o ajuste fino do controle PID sob condições climáticas adversas foram os nossos maiores desafios em campo.</p>
 
         <img src="Preparosparaacompeticao.jpg" class="inline-img" alt="Equipe preparando o drone e ajustando o código na bancada" onerror="handleImageError(this)">
-        <p style="text-align: center; font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--muted); margin-top: -1rem; margin-bottom: 2rem;">Ajuste fino de código e calibração de hardware momentos antes do voo oficial.</p>
+        <p style="text-align: center; font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem; margin-bottom: 2rem;">Ajuste fino de código e calibração de hardware momentos antes do voo oficial.</p>
 
         <div class="carousel-wrap">
           <div class="carousel-title">Bastidores do Evento</div>
@@ -246,7 +252,7 @@
         <p>Essa vitória impulsiona o GAIA Robótica para um novo patamar dentro e fora da UFTM. Mostrou à comunidade acadêmica a capacidade da equipe de trabalhar com o estado da arte em sistemas de voo autônomo e abre portas para parcerias com indústrias do setor de inovação e agronegócio no Triângulo Mineiro.</p>
         
         <img src="Equipe.jpg" class="inline-img" alt="Equipe GAIA Robótica reunida celebrando" onerror="handleImageError(this)">
-        <p style="text-align: center; font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--muted); margin-top: -1rem;">A equipe reunida: o motor humano por trás do projeto autônomo.</p>
+        <p style="text-align: center; font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem;">A equipe reunida: o motor humano por trás do projeto autônomo.</p>
 
       </div>
     </article>
