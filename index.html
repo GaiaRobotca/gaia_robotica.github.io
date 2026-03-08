@@ -324,8 +324,13 @@
   .patrocine-cta p{font-size:0.88rem;color:rgba(255,255,255,0.65);margin-top:0.3rem;}
 
   /* ===== RESPONSIVE ===== */
+  .menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; color: var(--blue-dark); cursor: pointer; }
+
   @media(max-width:900px){
-    nav ul{display:none;} nav{padding:0 1.5rem;}
+    .menu-toggle { display: block; }
+    nav ul { display: none; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); padding: 2rem; border-bottom: 2px solid var(--border); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); text-align: center; }
+    nav ul.active { display: flex; }
+    nav{padding:0 1.5rem;}
     .about-grid,.missao-grid,.contato-grid,.leadership{grid-template-columns:1fr;gap:2rem;}
     .docentes{grid-template-columns:1fr;}
     .awards-grid,.ativ-grid,.proj-grid,.nome-grid,.aprenda-grid,.cotas-grid,.patrocine-why{grid-template-columns:1fr 1fr;}
@@ -344,9 +349,9 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo"><span class="nav-dot"></span>GAIA <span class="g">ROBÓTICA</span></a>
+  <button class="menu-toggle">☰</button>
   <ul>
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#eletroquad">Eletroquad</a></li>
@@ -359,7 +364,6 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-supertag">UFTM · Universidade Federal do Triângulo Mineiro</div>
@@ -386,7 +390,6 @@
   </div>
 </section>
 
-<!-- SOBRE -->
 <section style="background:var(--white);">
 <div class="sec" id="sobre">
   <div class="sec-tag">// história</div>
@@ -424,7 +427,6 @@
 </div>
 </section>
 
-<!-- CONQUISTAS -->
 <section style="background:var(--surface);">
 <div class="sec" id="conquistas">
   <div class="sec-tag">// resultados</div>
@@ -476,13 +478,11 @@
 </div>
 </section>
 
-<!-- DIVIDER: ELETROQUAD -->
 <div class="section-divider" id="eletroquad">
   <h3>GAIA <span>ELETROQUAD</span></h3>
   <p>Drones, voo autônomo e competição SAE Brasil</p>
 </div>
 
-<!-- OBJETIVOS ELETROQUAD -->
 <section style="background:var(--white);">
 <div class="sec">
   <div class="sec-tag">// gaia eletroquad · objetivos</div>
@@ -508,7 +508,6 @@
 </div>
 </section>
 
-<!-- PROJETOS ELETROQUAD -->
 <section style="background:var(--surface);">
 <div class="sec">
   <div class="sec-tag">// gaia eletroquad · robôs</div>
@@ -547,13 +546,11 @@
 </div>
 </section>
 
-<!-- DIVIDER: ROBÓTICA -->
 <div class="section-divider" id="robotica">
   <h3>GAIA <span>ROBÓTICA</span></h3>
   <p>Extensão educacional, hackathons e formação na UFTM</p>
 </div>
 
-<!-- POR QUE SER GAIA / ATIVIDADES -->
 <section style="background:var(--white);">
 <div class="sec">
   <div class="sec-tag">// gaia robótica · atividades</div>
@@ -594,7 +591,6 @@
 </div>
 </section>
 
-<!-- MISSÃO EDUCACIONAL -->
 <section style="background:linear-gradient(140deg,var(--blue-deep) 0%,var(--blue-dark) 50%,var(--blue-mid) 100%);position:relative;overflow:hidden;">
 <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.07) 1.5px,transparent 1.5px);background-size:24px 24px;"></div>
 <div class="sec">
@@ -610,13 +606,12 @@
       <div class="mc"><div class="mc-icon">🏫</div><div class="mc-title">Escolas Públicas</div><p class="mc-text">Visitamos escolas de Uberaba com kits e demonstrações ao vivo de robôs reais.</p></div>
       <div class="mc"><div class="mc-icon">⚙️</div><div class="mc-title">Prática Real</div><p class="mc-text">Os alunos programam e operam os robôs eles mesmos — aprendendo fazendo.</p></div>
       <div class="mc"><div class="mc-icon">🧠</div><div class="mc-title">IA & Programação</div><p class="mc-text">Introdução à lógica de programação e IA de forma lúdica e acessível.</p></div>
-      <div class="mc"><div class="mc-icon">🌱</div><div class="mc-title">Extensão Certificada</div><p class="mc-text">Projeto de extensão certificado pela UFTM, unindo universidade e comunidade.</p></div>
+      <div class="mc"><div class="mc-title">🌱 Extensão Certificada</div><p class="mc-text">Projeto de extensão certificado pela UFTM, unindo universidade e comunidade.</p></div>
     </div>
   </div>
 </div>
 </section>
 
-<!-- EQUIPE -->
 <section style="background:var(--white);">
 <div class="sec" id="equipe">
   <div class="sec-tag">// as pessoas</div>
@@ -624,13 +619,11 @@
   <p class="lead">Liderado por estudantes dedicados e orientado por docentes experientes da UFTM.</p>
 
   <div class="leadership">
-    <!-- Capitã -->
     <div class="leader-main">
       <div class="leader-avatar">W</div>
       <div class="leader-role-tag">Capitã · Eletroquad</div>
       <div class="leader-name">Wanessa Karoline</div>
     </div>
-    <!-- Docentes -->
     <div class="docentes">
       <div class="docente-card">
         <div class="docente-avatar">F</div>
@@ -682,7 +675,6 @@
 </div>
 </section>
 
-<!-- PARCEIROS -->
 <section style="background:var(--surface);">
 <div class="sec">
   <div class="sec-tag">// parceria</div>
@@ -703,7 +695,6 @@
 </div>
 </section>
 
-<!-- NOME -->
 <section style="background:var(--blue-dark);">
 <div class="sec">
   <div class="sec-tag">// origem do nome</div>
@@ -717,7 +708,6 @@
 </div>
 </section>
 
-<!-- BLOG -->
 <section style="background:var(--surface);">
 <div class="sec" id="blog">
   <div class="sec-tag">// atualizações</div>
@@ -734,7 +724,6 @@
 </div>
 </section>
 
-<!-- CONTATO -->
 <section style="background:linear-gradient(140deg,var(--blue-deep) 0%,var(--blue-dark) 50%,var(--blue-mid) 100%);padding-top:5rem;" id="contato">
 <div class="sec" style="padding-top:2rem;">
   <div class="sec-tag">// fale com a gente</div>
@@ -768,7 +757,6 @@
 </div>
 </section>
 
-<!-- APRENDA + PATROCINE — CARDS DE CHAMADA -->
 <section style="background:var(--white);">
 <div class="sec">
   <div class="sec-tag">// explore mais</div>
@@ -776,7 +764,6 @@
   <p class="lead">Compartilhe o projeto com quem você conhece — ou mergulhe fundo no que a GAIA tem a oferecer.</p>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
 
-    <!-- APRENDA -->
     <a href="aprenda.html" style="text-decoration:none;display:block;background:var(--blue-deep);border:2px solid var(--blue-dark);padding:2.5rem;clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,0 100%);transition:transform 0.25s,box-shadow 0.25s;" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 40px rgba(13,79,160,0.35)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
       <div style="font-size:2.5rem;margin-bottom:1rem;">🧠</div>
       <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--green);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.5rem;">// conteúdo técnico</div>
@@ -791,7 +778,6 @@
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;color:var(--blue-light);letter-spacing:0.1em;text-transform:uppercase;">Ver todos os artigos →</span>
     </a>
 
-    <!-- PATROCINE -->
     <a href="patrocine.html" style="text-decoration:none;display:block;background:linear-gradient(135deg,var(--green-dark),#1a5e0d);border:2px solid var(--green-dark);padding:2.5rem;clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,0 100%);transition:transform 0.25s,box-shadow 0.25s;" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 40px rgba(61,138,26,0.35)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
       <div style="font-size:2.5rem;margin-bottom:1rem;">🏆</div>
       <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:rgba(255,255,255,0.6);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.5rem;">// empresas & parceiros</div>
@@ -816,7 +802,6 @@
 
   </div>
 
-  <!-- COMPARTILHE -->
   <div style="margin-top:1.5rem;background:var(--surface);border:2px solid var(--border);padding:2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;">
     <div>
       <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:900;color:var(--blue-dark);text-transform:uppercase;margin-bottom:0.3rem;">Conhece alguém que deveria saber da GAIA?</div>
@@ -832,7 +817,6 @@
 </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="fl">GAIA <span>ROBÓTICA</span></div>
   <p>Projeto de Extensão · UFTM · Uberaba, MG · Fundado em 2023</p>
@@ -845,5 +829,16 @@
   </div>
 </footer>
 
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navMenu = document.querySelector('nav ul');
+
+  if(menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+    });
+  }
+</script>
 </body>
 </html>
