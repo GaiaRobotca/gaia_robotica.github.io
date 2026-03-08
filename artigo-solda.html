@@ -14,18 +14,31 @@
   })();
 </script>
 
+<script>
+  function handleImageError(img) {
+    if (img.dataset.retried) return;
+    img.dataset.retried = "true";
+    let currentSrc = img.getAttribute('src');
+    if (currentSrc.endsWith('.jpg')) img.src = currentSrc.replace('.jpg', '.JPG');
+    else if (currentSrc.endsWith('.JPG')) img.src = currentSrc.replace('.JPG', '.jpg');
+    else if (currentSrc.endsWith('.png')) img.src = currentSrc.replace('.png', '.PNG');
+    else if (currentSrc.endsWith('.PNG')) img.src = currentSrc.replace('.PNG', '.png');
+    else if (currentSrc.endsWith('.gif')) img.src = currentSrc.replace('.gif', '.GIF');
+  }
+</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{--bg:#f0f7ff;--white:#ffffff;--blue:#1a6fd4;--blue-light:#3d9bff;--blue-mid:#2980e8;--blue-dark:#0d4fa0;--blue-deep:#071f4a;--green:#5cb82e;--green-dark:#3d8a1a;--text:#0d2a50;--muted:#5a7a9a;--border:#c8dff5;--surface:#e4f0ff;}
   *{margin:0;padding:0;box-sizing:border-box;} html{scroll-behavior:smooth;}
   body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;overflow-x:hidden;}
   
-  /* ===== NAV ===== */
+  /* ===== NAV (ATUALIZADA) ===== */
   nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.94);backdrop-filter:blur(16px);border-bottom:2px solid var(--border);display:flex;justify-content:space-between;align-items:center;padding:0 3rem;height:68px;}
   .nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.5rem;color:var(--blue-dark);text-decoration:none;letter-spacing:0.05em;display:flex;align-items:center;gap:0.6rem;}
   .nav-dot{width:10px;height:10px;background:var(--green);border-radius:50%;}
   .nav-logo .g{color:var(--green);}
-  nav ul{list-style:none;display:flex;gap:2.2rem;}
+  nav ul{list-style:none;display:flex;gap:1.8rem;}
   nav a{font-size:0.83rem;font-weight:600;color:var(--muted);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}
   nav a:hover{color:var(--blue);}
 
@@ -51,8 +64,10 @@
   .post-recente-thumb { width: 80px; height: 60px; border-radius: 4px; object-fit: cover; border: 1px solid var(--border); }
   .post-recente-titulo { font-family: 'Barlow', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--blue); line-height: 1.3; }
 
-  /* Estilos do Conteúdo */
-  .main-image img { width: 100%; height: 400px; object-fit: cover; border-radius: 4px; margin-bottom: 3rem; border: 2px solid var(--border); }
+  /* Estilos do Conteúdo e Imagens Integradas */
+  .inline-img { width: 100%; height: auto; max-height: 450px; border-radius: 8px; margin: 2rem 0 0.5rem 0; border: 2px solid var(--border); object-fit: cover; display: block; box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+  .img-caption { text-align: center; font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--muted); margin-bottom: 2rem; }
+  
   .article-content h2{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:900;color:var(--blue-dark);text-transform:uppercase;margin:3rem 0 1rem;border-bottom:2px solid var(--surface);padding-bottom:0.5rem;}
   .article-content p{font-size:1.05rem;line-height:1.82;color:var(--text);margin-bottom:1.3rem;}
   .article-content ul, .article-content ol { margin-left: 1.5rem; margin-bottom: 1.5rem; }
@@ -68,11 +83,20 @@
   .footer-col h4 { color: var(--green); margin-bottom: 1.5rem; text-transform: uppercase; font-family: 'Barlow Condensed', sans-serif; }
   .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
   .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.95rem; }
+  .fl { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:1.3rem; color:#fff; letter-spacing:0.08em; }
+  .fl span { color:var(--green); }
 
-  @media(max-width: 1000px) {
+  /* ===== RESPONSIVO MENU TELEMÓVEL ===== */
+  .menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; color: var(--blue-dark); cursor: pointer; }
+
+  @media(max-width: 1050px) {
     .container-leitura { grid-template-columns: 1fr; }
     .sidebar-posts { margin-top: 4rem; position: static; }
     .footer-grid { grid-template-columns: 1fr; text-align: center; }
+    .menu-toggle { display: block; }
+    nav ul { display: none; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); padding: 2rem; border-bottom: 2px solid var(--border); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); text-align: center; }
+    nav ul.active { display: flex; }
+    nav { padding: 0 1.5rem; }
   }
 </style>
 </head>
@@ -80,16 +104,22 @@
 
 <nav>
   <a href="index.html" class="nav-logo"><span class="nav-dot"></span>GAIA <span class="g">ROBÓTICA</span></a>
+  <button class="menu-toggle">☰</button>
   <ul>
     <li><a href="index.html#sobre">Sobre</a></li>
+    <li><a href="index.html#eletroquad">Eletroquad</a></li>
+    <li><a href="index.html#robotica">Robótica</a></li>
+    <li><a href="index.html#conquistas">Conquistas</a></li>
     <li><a href="aprenda.html">Aprenda</a></li>
-    <li><a href="patrocine.html" style="color:var(--green);">Patrocine</a></li>
+    <li><a href="patrocine.html" style="color:var(--green);font-weight:700;">Patrocine</a></li>
+    <li><a href="index.html#equipe">Equipe</a></li>
+    <li><a href="contato.html">Contato</a></li>
   </ul>
 </nav>
 
 <div class="article-hero">
   <div class="hero-inner">
-    <div class="breadcrumb"><a href="index.html">Home</a> › <a href="aprenda.html">Aprenda</a> › Eletrónica</div>
+    <div class="breadcrumb"><a href="index.html">Home</a> › <a href="aprenda.html">Aprenda</a> › Eletrônica</div>
     <div class="article-meta">
       <span class="meta-pill">Hardware & Oficinas</span>
       <span class="meta-pill">Iniciante</span>
@@ -102,9 +132,9 @@
 <div class="article-wrap">
   <div class="container-leitura">
     <article class="article-content-main">
-      <div class="main-image">
-        <img src="https://image.slidesharecdn.com/gaiasoldafinal-160523235450/85/gaiasoldafinal-15-2048.jpg" alt="Estação de Solda GAIA">
-      </div>
+      
+      <img src="estacaodesolda.jpg" class="inline-img" alt="Estação de Solda profissional" onerror="handleImageError(this)">
+      <p class="img-caption">Estação de solda com controle de temperatura, equipamento essencial.</p>
       
       <div class="article-content">
         <p>No <strong>GAIA Robótica</strong>, garantimos a integridade dos nossos sensores e a robustez dos drones em Uberaba através de conexões elétricas e metalúrgicas confiáveis.</p>
@@ -123,18 +153,25 @@
 
         <h2>2. A Técnica dos 4 Segundos</h2>
         <p>O calor deve fluir do ferro para a placa primeiro. A sequência correta garante uma solda brilhante e duradoura.</p>
+        
+        <img src="soldandoplaca.jpg" class="inline-img" alt="Pessoa soldando uma placa de circuito impresso" onerror="handleImageError(this)">
+        <p class="img-caption">Aplicação correta do calor e estanho nos pads da placa.</p>
+
         <ol>
             <li><strong>Aqueça:</strong> Encoste o ferro no terminal e na ilha por 2 segundos.</li>
             <li><strong>Aplique:</strong> Toque com a solda na ilha aquecida, não no ferro.</li>
             <li><strong>Finalize:</strong> Retire a solda e depois o ferro após 1 segundo adicional.</li>
         </ol>
 
+        <img src="tecnica-solda.gif" class="inline-img" alt="Animação da técnica de solda passo a passo" onerror="handleImageError(this)">
+        <p class="img-caption">Demonstração da técnica ideal de soldagem passo a passo.</p>
+
         <h2>3. Inspeção de Qualidade</h2>
         <p>Uma boa solda deve ter formato de cone perfeito e cobrir toda a ilha, sem excessos ou "bolas" de estanho.</p>
       </div>
 
       <section class="comments-section">
-        <h3>Discussão Técnica</h3>
+        <h3 style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; font-weight: 900; margin: 3rem 0 1.5rem; text-transform: uppercase; color: var(--blue-dark);">Discussão Técnica</h3>
         <script src="https://giscus.app/client.js" data-repo="GaiaRobotca/gaiarobotica-new.github.io" data-repo-id="R_kgDORhLuBw" data-category="General" data-category-id="DIC_kwDORhLuB84C37IJ" data-mapping="pathname" data-theme="light" data-lang="pt" crossorigin="anonymous" async></script>
       </section>
     </article>
@@ -180,7 +217,7 @@
   <div class="footer-grid">
     <div class="footer-brand">
       <span class="fl">GAIA <span>ROBÓTICA</span></span>
-      <p>Desenvolvendo tecnologias autónomas e democratizando o conhecimento na UFTM.</p>
+      <p style="margin-top: 1rem; color: rgba(255,255,255,0.6); font-size: 0.9rem;">Desenvolvendo tecnologias autónomas e democratizando o conhecimento na UFTM.</p>
     </div>
     <div class="footer-col">
       <h4>Navegação</h4>
@@ -198,5 +235,29 @@
     </div>
   </div>
 </footer>
+
+<script>
+  // Script para fechar o menu no mobile após clicar num link
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navMenu = document.querySelector('nav ul');
+  const navLinks = document.querySelectorAll('nav ul li a');
+
+  if(menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+    });
+
+    // Fecha o menu ao clicar em qualquer link (importante para âncoras na mesma página)
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (navMenu.classList.contains('active')) {
+          navMenu.classList.remove('active');
+          menuToggle.textContent = '☰';
+        }
+      });
+    });
+  }
+</script>
 </body>
 </html>
