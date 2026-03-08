@@ -43,7 +43,7 @@
 
   .article-wrap{max-width:1200px;margin:0 auto;padding:4rem 3rem;}
   .container-leitura { display: grid; grid-template-columns: 1fr 350px; gap: 4rem; }
-  .article-content-main { min-width: 0; } /* Evita grid blowout */
+  .article-content-main { min-width: 0; } 
 
   .sidebar-posts { position: sticky; top: 100px; height: fit-content; }
   .sidebar-posts h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; font-weight: 900; margin-bottom: 2rem; text-transform: uppercase; color: var(--blue-dark); }
@@ -123,12 +123,15 @@
   }
 </style>
 <script>
+  // SCRIPT SALVA-VIDAS DE IMAGENS
   function handleImageError(img) {
     if (img.dataset.retried) return;
     img.dataset.retried = "true";
     let currentSrc = img.getAttribute('src');
     if (currentSrc.endsWith('.jpg')) img.src = currentSrc.replace('.jpg', '.JPG');
     else if (currentSrc.endsWith('.JPG')) img.src = currentSrc.replace('.JPG', '.jpg');
+    else if (currentSrc.endsWith('.png')) img.src = currentSrc.replace('.png', '.PNG');
+    else if (currentSrc.endsWith('.PNG')) img.src = currentSrc.replace('.PNG', '.png');
   }
 </script>
 </head>
@@ -191,6 +194,10 @@
               <img src="escola-2.jpg" class="carousel-slide" alt="Atividade nas escolas" onerror="handleImageError(this)">
               <img src="escola-3.jpg" class="carousel-slide" alt="Atividade nas escolas" onerror="handleImageError(this)">
               <img src="escola-4.jpg" class="carousel-slide" alt="Atividade nas escolas" onerror="handleImageError(this)">
+              <img src="escola-5.jpg" class="carousel-slide" alt="Atividade nas escolas" onerror="handleImageError(this)">
+              <img src="escola-6.jpg" class="carousel-slide" alt="Atividade nas escolas" onerror="handleImageError(this)">
+              <img src="escola-7.jpg" class="carousel-slide" alt="Atividade nas escolas" onerror="handleImageError(this)">
+              <img src="escola-8.jpg" class="carousel-slide" alt="Atividade nas escolas" onerror="handleImageError(this)">
             </div>
             <button class="carousel-btn next">&#10095;</button>
           </div>
@@ -211,19 +218,19 @@
       </a>
 
       <a href="conquista-hackagis.html" class="post-recente-item">
-        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=80" class="post-recente-thumb">
+        <img src="https://placehold.co/80x60/0d2a50/c8dff5?text=HackaGIS" class="post-recente-thumb">
         <span class="post-recente-titulo">2° Lugar HackaGIS 2023</span>
       </a>
 
       <h3 style="margin-top: 3rem;">Aprenda a Fazer</h3>
       
       <a href="artigo-arduino.html" class="post-recente-item">
-        <img src="https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&w=80" class="post-recente-thumb">
+        <img src="https://placehold.co/80x60/5cb82e/ffffff?text=Arduino" class="post-recente-thumb">
         <span class="post-recente-titulo">O que é Arduino?</span>
       </a>
 
       <a href="artigo-solda.html" class="post-recente-item">
-        <img src="https://image.slidesharecdn.com/gaiasoldafinal-160523235450/85/gaiasoldafinal-15-2048.jpg" class="post-recente-thumb">
+        <img src="https://placehold.co/80x60/3d9bff/ffffff?text=Solda" class="post-recente-thumb">
         <span class="post-recente-titulo">Guia de Solda para Iniciantes</span>
       </a>
     </aside>
