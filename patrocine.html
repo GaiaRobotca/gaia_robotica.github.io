@@ -288,23 +288,26 @@
         <a href="index.html#contato" class="c-link"><span class="c-icon">🔗</span>Formulário no site principal</a>
       </div>
     </div>
-    <div class="cf" id="form">
+   <form class="cf" id="form" action="https://formsubmit.co/gaia.robotica.uftm@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Novo contato de Patrocínio - GAIA!">
+      <input type="hidden" name="_captcha" value="false">
+      
       <label>Seu nome / empresa</label>
-      <input type="text" placeholder="Ex: João Silva — TechCo Uberaba">
+      <input type="text" name="Nome" placeholder="Ex: João Silva — TechCo Uberaba" required>
       <label>E-mail para contato</label>
-      <input type="email" placeholder="seu@email.com">
+      <input type="email" name="Email" placeholder="seu@email.com" required>
       <label>Cota de interesse</label>
-      <select>
+      <select name="Cota" required>
         <option value="">Selecione uma opção</option>
-        <option>🌱 Apoiador</option>
-        <option>🚀 Parceiro</option>
-        <option>⭐ Master</option>
-        <option>💬 Quero uma proposta personalizada</option>
+        <option value="Apoiador">🌱 Apoiador</option>
+        <option value="Parceiro">🚀 Parceiro</option>
+        <option value="Master">⭐ Master</option>
+        <option value="Personalizada">💬 Quero uma proposta personalizada</option>
       </select>
       <label>Mensagem</label>
-      <textarea rows="4" placeholder="Conte um pouco sobre sua empresa e o que busca com a parceria..."></textarea>
-      <button class="btn-p" style="align-self:flex-start;">Enviar Proposta →</button>
-    </div>
+      <textarea name="Mensagem" rows="4" placeholder="Conte um pouco sobre sua empresa e o que busca com a parceria..." required></textarea>
+      <button type="submit" class="btn-p" style="align-self:flex-start;">Enviar Proposta →</button>
+    </form>
   </div>
 </div>
 </section>
