@@ -16,13 +16,14 @@
 <style>
   :root{--bg:#f0f7ff;--white:#ffffff;--blue:#1a6fd4;--blue-light:#3d9bff;--blue-mid:#2980e8;--blue-dark:#0d4fa0;--blue-deep:#071f4a;--green:#5cb82e;--green-dark:#3d8a1a;--text:#0d2a50;--muted:#5a7a9a;--border:#c8dff5;--surface:#e4f0ff;}
   *{margin:0;padding:0;box-sizing:border-box;} html{scroll-behavior:smooth;}
-  body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;overflow-x:hidden;}
+  body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;overflow-x:hidden; display: flex; flex-direction: column; min-height: 100vh;}
 
+  /* ===== NAV (ATUALIZADA) ===== */
   nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.94);backdrop-filter:blur(16px);border-bottom:2px solid var(--border);display:flex;justify-content:space-between;align-items:center;padding:0 3rem;height:68px;}
   .nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.5rem;color:var(--blue-dark);text-decoration:none;letter-spacing:0.05em;display:flex;align-items:center;gap:0.6rem;}
   .nav-dot{width:10px;height:10px;background:var(--green);border-radius:50%;}
   .nav-logo .g{color:var(--green);}
-  nav ul{list-style:none;display:flex;gap:2.2rem;}
+  nav ul{list-style:none;display:flex;gap:1.8rem;}
   nav a{font-size:0.83rem;font-weight:600;color:var(--muted);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}
   nav a:hover,nav a.active{color:var(--blue);}
 
@@ -41,7 +42,7 @@
   .sb-sep{width:1px;height:28px;background:rgba(255,255,255,0.1);}
   .sb-trending{font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:700;color:#fff;line-height:1.2;max-width:300px;}
 
-  .sec{max-width:1100px;margin:0 auto;padding:5rem 3rem;}
+  .sec{max-width:1100px;margin:0 auto;padding:5rem 3rem; flex: 1;}
   h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:var(--blue-dark);text-transform:uppercase;margin-bottom:2.5rem;}
 
   .filter-bar{display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:3rem;}
@@ -80,19 +81,46 @@
   .trending-tag{display:none;position:absolute;top:0;left:0;background:var(--green);font-family:'Space Mono',monospace;font-size:0.58rem;color:#fff;padding:0.22rem 0.65rem;z-index:2;text-transform:uppercase;}
   .article-card.is-trending .trending-tag{display:block;}
 
-  footer{background:#040e22;padding:2.5rem 3rem;color:#fff;margin-top:4rem;display:flex;justify-content:space-between;align-items:center;}
+  /* ===== FOOTER (ATUALIZADO) ===== */
+  footer { background: #020817; padding: 5rem 3rem 3rem; color: #fff; margin-top: auto; }
+  .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; }
+  .footer-col h4 { color: var(--green); margin-bottom: 1.5rem; text-transform: uppercase; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+  .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: #fff; }
+  .fl { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:1.3rem; color:#fff; letter-spacing:0.08em; }
+  .fl span { color:var(--green); }
 
-  @media(max-width:900px){.cards-grid{grid-template-columns:1fr 1fr;}}
-  @media(max-width:600px){.cards-grid{grid-template-columns:1fr;}}
+  /* ===== RESPONSIVO (ATUALIZADO) ===== */
+  .menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; color: var(--blue-dark); cursor: pointer; }
+
+  @media(max-width: 1050px) {
+    .menu-toggle { display: block; }
+    nav ul { display: none; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); padding: 2rem; border-bottom: 2px solid var(--border); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); text-align: center; }
+    nav ul.active { display: flex; }
+    nav { padding: 0 1.5rem; }
+    .cards-grid{grid-template-columns:1fr 1fr;}
+    .footer-grid { grid-template-columns: 1fr; text-align: center; }
+  }
+  @media(max-width:600px){
+    .cards-grid{grid-template-columns:1fr;}
+  }
 </style>
 </head>
 <body>
 
 <nav>
   <a href="index.html" class="nav-logo"><span class="nav-dot"></span>GAIA <span class="g">ROBÓTICA</span></a>
+  <button class="menu-toggle">☰</button>
   <ul>
+    <li><a href="index.html#sobre">Sobre</a></li>
+    <li><a href="index.html#eletroquad">Eletroquad</a></li>
+    <li><a href="index.html#robotica">Robótica</a></li>
+    <li><a href="index.html#conquistas">Conquistas</a></li>
     <li><a href="aprenda.html" class="active">Aprenda</a></li>
     <li><a href="patrocine.html" style="color:var(--green);font-weight:700;">Patrocine</a></li>
+    <li><a href="index.html#equipe">Equipe</a></li>
+    <li><a href="contato.html">Contato</a></li>
   </ul>
 </nav>
 
@@ -229,8 +257,26 @@
 </div>
 
 <footer>
-  <div class="fl">GAIA <span>ROBÓTICA</span></div>
-  <p>UFTM · Uberaba, MG · 2026</p>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="fl">GAIA <span>ROBÓTICA</span></span>
+      <p style="margin-top: 1rem; color: rgba(255,255,255,0.6); font-size: 0.9rem;">Desenvolvendo tecnologias autônomas na UFTM.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navegação</h4>
+      <ul class="footer-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="aprenda.html">Aprenda</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Social</h4>
+      <ul class="footer-links">
+        <li><a href="https://www.instagram.com/gaia.robotica/">Instagram</a></li>
+        <li><a href="https://github.com/gaiarobotica">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
 </footer>
 
 <script>
@@ -246,7 +292,6 @@ const ARTICLES = {
 
 async function getViews(id) {
   try {
-    // Usando o Abacus (substituto confiável da CountAPI)
     const r = await fetch(`https://abacus.jasoncameron.dev/get/${NAMESPACE}/${id}`);
     const data = await r.json();
     return data.value || 0;
@@ -301,6 +346,17 @@ function filterCards(btn, cat) {
 }
 
 init();
+
+/* SCRIPT PARA O MENU DE TELEMÓVEL FUNCIONAR NESTA PÁGINA TAMBÉM */
+const menuToggle = document.querySelector('.menu-toggle');
+const navMenu = document.querySelector('nav ul');
+
+if(menuToggle && navMenu) {
+  menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+  });
+}
 </script>
 </body>
 </html>
