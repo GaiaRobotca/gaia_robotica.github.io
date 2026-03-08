@@ -12,6 +12,19 @@
     document.getElementById('dynamic-favicon').setAttribute('href', randomIcon);
   })();
 </script>
+
+<script>
+  function handleImageError(img) {
+    if (img.dataset.retried) return;
+    img.dataset.retried = "true";
+    let currentSrc = img.getAttribute('src');
+    if (currentSrc.endsWith('.jpg')) img.src = currentSrc.replace('.jpg', '.JPG');
+    else if (currentSrc.endsWith('.JPG')) img.src = currentSrc.replace('.JPG', '.jpg');
+    else if (currentSrc.endsWith('.png')) img.src = currentSrc.replace('.png', '.PNG');
+    else if (currentSrc.endsWith('.PNG')) img.src = currentSrc.replace('.PNG', '.png');
+  }
+</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -44,7 +57,7 @@
   .nav-logo { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:1.5rem; color:var(--blue-dark); text-decoration:none; letter-spacing:0.05em; display:flex; align-items:center; gap:0.6rem; }
   .nav-dot { width:10px; height:10px; background:var(--green); border-radius:50%; }
   .nav-logo .g { color:var(--green); }
-  nav ul { list-style:none; display:flex; gap:2.2rem; }
+  nav ul { list-style:none; display:flex; gap:1.8rem; }
   nav a { font-size:0.83rem; font-weight:600; color:var(--muted); text-decoration:none; letter-spacing:0.06em; text-transform:uppercase; transition:color 0.2s; }
   nav a:hover { color:var(--blue); }
 
@@ -64,7 +77,6 @@
   .hero h1 .g { color:var(--green); }
   .hero-sub { font-size:1.05rem; color:rgba(255,255,255,0.72); max-width:560px; margin:2rem 0 2.5rem; font-weight:300; line-height:1.75; }
 
-  /* sub-projects pill nav */
   .hero-projects { display:flex; gap:1rem; margin-bottom:2.5rem; flex-wrap:wrap; }
   .hero-pill {
     display:flex; align-items:center; gap:0.6rem;
@@ -121,36 +133,58 @@
   .section-divider h3 span { color:var(--green); }
   .section-divider p { font-size:0.9rem; color:rgba(255,255,255,0.55); margin-top:0.5rem; position:relative; z-index:1; }
 
-  /* ===== CONQUISTAS ===== */
+  /* ===== CONQUISTAS (CARDS COM IMAGEM) ===== */
   .awards-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
-
-  /* Ajuste para tornar os cards de conquista clicáveis */
   .award-link { text-decoration: none; color: inherit; display: block; }
   .award-card {
-    border:2px solid var(--border); background:var(--white);
-    padding:0; overflow:hidden;
-    transition:border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    border: 1px solid var(--border);
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    height: 100%;
   }
-  .award-link:hover .award-card, .award-card:hover { 
+  .award-img-header {
+    width: 100%;
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+    background: var(--blue-deep);
+  }
+  .award-img-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .award-link:hover .award-card { 
     border-color:var(--blue-light); 
     transform:translateY(-5px); 
     box-shadow:0 14px 40px rgba(26,111,212,0.13); 
   }
-
-  .award-top {
-    background:linear-gradient(135deg, var(--blue-dark), var(--blue));
-    padding:1.5rem; display:flex; align-items:center; gap:1rem;
+  .award-link:hover .award-img-header img { transform: scale(1.1); }
+  
+  .award-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--blue-dark);
+    color: #fff;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
   }
-  .award-top.green-t { background:linear-gradient(135deg, var(--green-dark), var(--green)); }
+  .award-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+  .award-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 900; color: var(--blue-dark); text-transform: uppercase; margin-bottom: 0.75rem; }
+  .award-body p { font-size: 0.92rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.5rem; }
+  .award-date { margin-top: auto; font-family: 'Space Mono', monospace; font-size: 0.68rem; color: var(--blue); text-transform: uppercase; font-weight: 700; }
 
-  .award-place { font-family:'Barlow Condensed',sans-serif; font-size:3.5rem; font-weight:900; color:rgba(255,255,255,0.2); line-height:1; }
-  .award-title { font-family:'Barlow Condensed',sans-serif; font-size:1.3rem; font-weight:900; color:#fff; text-transform:uppercase; line-height:1.1; }
-  .award-sub { font-size:0.78rem; color:rgba(255,255,255,0.65); margin-top:0.25rem; }
-  .award-body { padding:1.4rem 1.5rem; }
-  .award-body p { font-size:0.9rem; color:var(--muted); line-height:1.65; }
-  .award-date { font-family:'Space Mono',monospace; font-size:0.68rem; color:var(--blue); margin-top:0.75rem; text-transform:uppercase; letter-spacing:0.1em; }
-
-  /* ===== ATIVIDADES (por que ser GAIA) ===== */
+  /* ===== ATIVIDADES ===== */
   .ativ-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
   .ativ-card { background:var(--white); border:2px solid var(--border); padding:2rem; transition:border-color 0.25s,transform 0.25s; position:relative; overflow:hidden; }
   .ativ-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:var(--green); transform:scaleX(0); transform-origin:left; transition:transform 0.3s; }
@@ -188,36 +222,28 @@
   .mc-text { font-size:0.82rem; color:rgba(255,255,255,0.58); line-height:1.55; }
 
   /* ===== EQUIPE ===== */
-  .leadership { display:grid; grid-template-columns:1fr 2fr; gap:3rem; align-items:start; margin-bottom:3rem; }
-
-  .leader-main {
-    background:var(--blue-dark);
-    clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,0 100%);
-    padding:2.5rem; text-align:center;
-  }
-  .leader-avatar {
-    width:96px; height:96px; border-radius:50%;
-    background:var(--blue); margin:0 auto 1.25rem;
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Barlow Condensed',sans-serif; font-size:2.8rem; font-weight:900; color:var(--green);
-  }
+  .leadership { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: stretch; margin-bottom: 3rem;}
+  .leader-main { background: var(--blue-dark); clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%); padding: 3rem 2rem; text-align: center; display: flex; flex-direction: column; justify-content: center; border: 1px solid rgba(255,255,255,0.1); }
+  .leader-avatar, .docente-avatar, .ms-avatar { border-radius: 50%; object-fit: cover; border: 3px solid var(--green); padding: 4px; background: var(--white); transition: transform 0.3s ease; }
+  .leader-avatar { width: 140px; height: 140px; margin: 0 auto 1.5rem; }
+  .docente-avatar { width: 70px; height: 70px; min-width: 70px; border-color: var(--blue-light); }
+  .ms-avatar { width: 50px; height: 50px; min-width: 50px; border: 2px solid var(--blue); padding: 2px; }
+  .member-simple-card:hover .ms-avatar, .docente-card:hover .docente-avatar { transform: scale(1.1) rotate(5deg); }
+  
   .leader-role-tag { font-family:'Space Mono',monospace; font-size:0.68rem; color:var(--green); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:0.5rem; }
   .leader-name { font-family:'Barlow Condensed',sans-serif; font-size:1.6rem; font-weight:900; color:#fff; text-transform:uppercase; letter-spacing:0.05em; }
 
   .docentes { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
-  .docente-card { background:var(--surface); border:2px solid var(--border); padding:1.75rem; display:flex; gap:1.25rem; align-items:flex-start; transition:border-color 0.2s; }
-  .docente-card:hover { border-color:var(--blue); }
-  .docente-avatar { width:56px; height:56px; min-width:56px; border-radius:50%; background:var(--blue-dark); display:flex; align-items:center; justify-content:center; font-family:'Barlow Condensed',sans-serif; font-size:1.5rem; font-weight:900; color:#fff; }
+  .docente-card { background:var(--surface); border:1px solid var(--border); padding:1.5rem; display:flex; gap:1.5rem; align-items:center; border-radius: 8px; transition:all 0.25s ease; }
+  .docente-card:hover { background: var(--white); border-color:var(--blue); box-shadow: 0 10px 25px rgba(26,111,212,0.1); }
   .doc-role { font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--blue); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.3rem; }
   .doc-name { font-family:'Barlow Condensed',sans-serif; font-size:1.15rem; font-weight:800; color:var(--blue-dark); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.3rem; }
   .doc-desc { font-size:0.83rem; color:var(--muted); line-height:1.55; }
 
-  /* Lista de Membros Simples */
   .members-section-title { font-family:'Barlow Condensed',sans-serif; font-size:1.8rem; font-weight:900; color:var(--blue-dark); text-transform:uppercase; margin: 3rem 0 1.5rem; }
-  .members-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:3rem; }
-  .member-simple-card { background:var(--surface); border:2px solid var(--border); padding:1rem 1.25rem; display:flex; align-items:center; gap:1rem; transition:border-color 0.2s; }
-  .member-simple-card:hover { border-color:var(--blue); }
-  .ms-avatar { width:42px; height:42px; min-width:42px; border-radius:50%; background:var(--blue); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Barlow Condensed',sans-serif; font-size:1.2rem; font-weight:900; }
+  .members-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; margin-bottom:3rem; }
+  .member-simple-card { background:var(--white); border:1px solid var(--border); padding:0.8rem 1rem; border-radius: 50px; display:flex; align-items:center; gap:1rem; transition:all 0.2s ease; }
+  .member-simple-card:hover { border-color:var(--green); background:var(--surface); transform: translateX(5px); }
   .ms-name { font-size:0.92rem; font-weight:600; color:var(--blue-dark); line-height:1.2; }
 
   .hackagis-team { margin-top:2rem; background:var(--blue-dark); padding:2rem 2.5rem; display:flex; align-items:center; gap:2rem; clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%); }
@@ -253,23 +279,6 @@
   .p-title { font-weight:600; color:var(--blue-dark); font-size:0.97rem; }
   .p-cat { font-family:'Space Mono',monospace; font-size:0.62rem; color:var(--green-dark); text-transform:uppercase; letter-spacing:0.1em; background:rgba(92,184,46,0.12); padding:0.28rem 0.65rem; white-space:nowrap; }
 
-  /* ===== CONTATO ===== */
-  .contato-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
-  .ps-banner { background:rgba(92,184,46,0.15); border:1px solid var(--green); padding:1.25rem 1.5rem; margin-bottom:1.5rem; display:flex; align-items:center; gap:1rem; }
-  .ps-banner-icon { font-size:1.4rem; }
-  .ps-banner-title { font-family:'Barlow Condensed',sans-serif; font-weight:700; color:#fff; font-size:1rem; text-transform:uppercase; letter-spacing:0.05em; }
-  .ps-banner-link { font-size:0.82rem; color:var(--green); text-decoration:underline; }
-  .c-links { display:flex; flex-direction:column; gap:0.75rem; }
-  .c-link { display:flex; align-items:center; gap:1rem; padding:1.1rem 1.5rem; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:#fff; text-decoration:none; font-size:0.92rem; transition:background 0.2s; }
-  .c-link:hover { background:rgba(255,255,255,0.16); }
-  .c-icon { width:32px; height:32px; background:var(--green); display:flex; align-items:center; justify-content:center; font-size:0.88rem; flex-shrink:0; }
-  .cf { display:flex; flex-direction:column; gap:1rem; }
-  .cf input, .cf textarea { background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:#fff; padding:0.9rem 1.25rem; font-family:'Barlow',sans-serif; font-size:0.92rem; outline:none; transition:border-color 0.2s; resize:none; }
-  .cf input::placeholder, .cf textarea::placeholder { color:rgba(255,255,255,0.38); }
-  .cf input:focus, .cf textarea:focus { border-color:var(--green); }
-  .btn-send { background:var(--green); border:none; color:#fff; padding:1rem 2.5rem; font-family:'Barlow Condensed',sans-serif; font-size:1rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%); transition:background 0.2s; align-self:flex-start; }
-  .btn-send:hover { background:var(--green-dark); }
-
   /* ===== FOOTER ===== */
   footer { background:#040e22; padding:2.5rem 3rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
   .fl { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:1.3rem; color:#fff; letter-spacing:0.08em; }
@@ -292,41 +301,40 @@
   /* ===== RESPONSIVE ===== */
   .menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; color: var(--blue-dark); cursor: pointer; }
 
-  @media(max-width:900px){
+  @media(max-width:1050px){
     .menu-toggle { display: block; }
     nav ul { display: none; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); padding: 2rem; border-bottom: 2px solid var(--border); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); text-align: center; }
     nav ul.active { display: flex; }
     nav{padding:0 1.5rem;}
-    .about-grid,.missao-grid,.contato-grid,.leadership{grid-template-columns:1fr;gap:2rem;}
+    .about-grid,.missao-grid,.leadership{grid-template-columns:1fr;gap:2rem;}
     .docentes{grid-template-columns:1fr;}
-    .awards-grid,.ativ-grid,.proj-grid,.nome-grid,.aprenda-grid,.cotas-grid,.patrocine-why{grid-template-columns:1fr 1fr;}
-    .numeros-grid{grid-template-columns:1fr 1fr;}
+    .awards-grid,.ativ-grid,.proj-grid,.nome-grid,.parc-grid{grid-template-columns:1fr 1fr;}
     .members-grid { grid-template-columns: 1fr 1fr; }
     .hero{padding:6rem 1.5rem 5rem;}
     .sec{padding:4rem 1.5rem;}
-    .kit-banner,.aprenda-insta-box,.patrocine-cta{grid-template-columns:1fr;}
+    .kit-banner{grid-template-columns:1fr;}
     footer{flex-direction:column;text-align:center;}
     .footer-links{justify-content:center;}
     .blog-post{grid-template-columns:1fr;gap:0.3rem;}
   }
   @media(max-width:600px){
-    .awards-grid,.ativ-grid,.proj-grid,.nome-grid,.parc-grid,.mc-grid,.docentes,.aprenda-grid,.cotas-grid,.patrocine-why,.numeros-grid,.members-grid{grid-template-columns:1fr;}
+    .awards-grid,.ativ-grid,.proj-grid,.nome-grid,.parc-grid,.mc-grid,.docentes,.members-grid{grid-template-columns:1fr;}
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo"><span class="nav-dot"></span>GAIA <span class="g">ROBÓTICA</span></a>
+  <a href="#" class="nav-logo"><span class="nav-dot"></span>GAIA <span class="g">ROBÓTICA</span></a>
   <button class="menu-toggle">☰</button>
   <ul>
-    <li><a href="index.html#sobre">Sobre</a></li>
-    <li><a href="index.html#eletroquad">Eletroquad</a></li>
-    <li><a href="index.html#robotica">Robótica</a></li>
-    <li><a href="index.html#conquistas">Conquistas</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#eletroquad">Eletroquad</a></li>
+    <li><a href="#robotica">Robótica</a></li>
+    <li><a href="#conquistas">Conquistas</a></li>
     <li><a href="aprenda.html">Aprenda</a></li>
     <li><a href="patrocine.html" style="color:var(--green);font-weight:700;">Patrocine</a></li>
-    <li><a href="index.html#equipe">Equipe</a></li>
+    <li><a href="#equipe">Equipe</a></li>
     <li><a href="contato.html">Contato</a></li>
   </ul>
 </nav>
@@ -398,20 +406,18 @@
 <div class="sec">
   <div class="sec-tag">// resultados</div>
   <h2>Nossas Conquistas</h2>
-  <p class="lead">Em menos de 2 anos, o GAIA já subiu ao pódio em competições regionais e nacionais. Clique para saber mais.</p>
+  <p class="lead">Em menos de 2 anos, o GAIA já subiu ao pódio em competições regionais e nacionais. Clique para ver os detalhes de cada vitória.</p>
   
   <div class="awards-grid">
     <a href="conquista-sae.html" class="award-link">
       <div class="award-card">
-        <div class="award-top">
-          <div class="award-place">3°</div>
-          <div>
-            <div class="award-title">SAE Brasil Eletroquad</div>
-            <div class="award-sub">Competição Nacional</div>
-          </div>
+        <div class="award-img-header">
+          <img src="IMG_7491.jpg" alt="Equipe SAE Brasil" onerror="handleImageError(this)">
+          <div class="award-badge">3° LUGAR</div>
         </div>
         <div class="award-body">
-          <p>Terceiro lugar na competição EletroQuad promovida pela SAE Brasil e Eletrobras. Drone quadrotor autônomo desenvolvido do zero pela equipe GAIA Eletroquad.</p>
+          <div class="award-title">SAE Brasil Eletroquad</div>
+          <p>Bronze nacional com o drone quadrotor autônomo desenvolvido do zero pela nossa equipe de engenharia.</p>
           <div class="award-date">Novembro de 2025</div>
         </div>
       </div>
@@ -419,15 +425,13 @@
 
     <a href="conquista-hackagis.html" class="award-link">
       <div class="award-card">
-        <div class="award-top green-t">
-          <div class="award-place">2°</div>
-          <div>
-            <div class="award-title">HackaGIS</div>
-            <div class="award-sub">1° Edição · UFTM/ICTE</div>
-          </div>
+        <div class="award-img-header">
+          <img src="IMG_3194.jpg" alt="Premiação HackaGIS" onerror="handleImageError(this)">
+          <div class="award-badge" style="background:var(--green);">2° LUGAR</div>
         </div>
         <div class="award-body">
-          <p>Segunda colocação no 1° HackaGIS (20 e 21 de outubro de 2023), com a equipe formada por Wanessa Karoline, Valdivino Junior e Gabriel Meireles.</p>
+          <div class="award-title">HackaGIS 2023</div>
+          <p>Vice-campeões na 1° Edição do HackaGIS da UFTM, focada em soluções inteligentes e geoprocessamento.</p>
           <div class="award-date">Outubro de 2023</div>
         </div>
       </div>
@@ -435,16 +439,14 @@
 
     <a href="conquista-escolas.html" class="award-link">
       <div class="award-card">
-        <div class="award-top" style="background:linear-gradient(135deg,#4a2080,#7a40cc);">
-          <div class="award-place">∞</div>
-          <div>
-            <div class="award-title">Escolas Impactadas</div>
-            <div class="award-sub">Missão de Extensão</div>
-          </div>
+        <div class="award-img-header">
+          <img src="IMG_7953.jpg" alt="Projeto Escolas" onerror="handleImageError(this)">
+          <div class="award-badge" style="background:#4a2080;">EXTENSÃO</div>
         </div>
         <div class="award-body">
-          <p>Levamos robótica educacional às escolas públicas de Uberaba e região, impactando centenas de estudantes com kits práticos e demonstrações ao vivo.</p>
-          <div class="award-date">Desde 2023 — em andamento</div>
+          <div class="award-title">Escolas Impactadas</div>
+          <p>Impacto social contínuo levando robótica e tecnologia para centenas de alunos da rede pública de Uberaba.</p>
+          <div class="award-date">Desde 2023 — Ativo</div>
         </div>
       </div>
     </a>
@@ -594,111 +596,125 @@
 
   <div class="leadership">
     <div class="leader-main">
-      <div class="leader-avatar">W</div>
+      <img src="wanessa.jpg" class="leader-avatar" alt="Wanessa Karoline" onerror="this.src='https://ui-avatars.com/api/?name=Wanessa+Karoline&background=1a6fd4&color=fff'">
       <div class="leader-role-tag">Capitã · Eletroquad</div>
       <div class="leader-name">Wanessa Karoline</div>
     </div>
+
     <div class="docentes">
       <div class="docente-card">
-        <div class="docente-avatar">F</div>
+        <img src="fabian.jpg" class="docente-avatar" alt="Fabian Molina" onerror="this.src='https://ui-avatars.com/api/?name=Fabian+Molina&background=0d4fa0&color=fff'">
         <div>
           <div class="doc-role">Coordenador · Docente</div>
           <div class="doc-name">Fabian Molina</div>
-          <p class="doc-desc">Coordenador do projeto GAIA Eletroquad. Docente da UFTM responsável pela condução acadêmica e técnica do projeto.</p>
+          <p class="doc-desc">Gestão acadêmica e técnica do GAIA Eletroquad.</p>
         </div>
       </div>
+
       <div class="docente-card">
-        <div class="docente-avatar">V</div>
+        <img src="vinicius.jpg" class="docente-avatar" alt="Vinícius Abrão" onerror="this.src='https://ui-avatars.com/api/?name=Vinicius+Abrao&background=0d4fa0&color=fff'">
         <div>
           <div class="doc-role">Orientador · Docente</div>
           <div class="doc-name">Vinícius Abrão</div>
-          <p class="doc-desc">Co-fundador e orientador do GAIA Robótica. Docente da UFTM, impulsionou a criação do projeto em 2023.</p>
+          <p class="doc-desc">Co-fundador e impulsionador da robótica na UFTM.</p>
         </div>
       </div>
+
       <div class="docente-card">
-        <div class="docente-avatar" style="background:var(--green);">V</div>
+        <img src="valdivino.jpg" class="docente-avatar" style="border-color:var(--green);" alt="Valdivino Junior" onerror="this.src='https://ui-avatars.com/api/?name=Valdivino+Junior&background=5cb82e&color=fff'">
         <div>
           <div class="doc-role" style="color:var(--green);">Co-fundador · Discente</div>
           <div class="doc-name">Valdivino Junior</div>
-          <p class="doc-desc">Co-fundador do GAIA Robótica. Presidente e membro da equipe que conquistou o 2° lugar no HackaGIS 2023.</p>
+          <p class="doc-desc">Presidente e competidor premiado no HackaGIS.</p>
         </div>
       </div>
+
       <div class="docente-card">
-        <div class="docente-avatar" style="background:var(--green);">G</div>
+        <img src="gabriel-m.jpg" class="docente-avatar" style="border-color:var(--green);" alt="Gabriel Meireles" onerror="this.src='https://ui-avatars.com/api/?name=Gabriel+Meireles&background=5cb82e&color=fff'">
         <div>
           <div class="doc-role" style="color:var(--green);">Membro · Discente</div>
           <div class="doc-name">Gabriel Meireles</div>
-          <p class="doc-desc">Tesoureiro do GAIA Robótica. Integrou a equipe premiada no 1° HackaGIS da UFTM em outubro de 2023.</p>
+          <p class="doc-desc">Tesoureiro e especialista em geoprocessamento.</p>
         </div>
       </div>
     </div>
   </div>
 
   <h3 class="members-section-title">Membros Atuais</h3>
- <div class="members-grid">
-    <div class="member-simple-card">
-      <div class="ms-avatar">C</div>
-      <div class="ms-name">Camila Francisca de Oliveira</div>
+  <div class="members-grid">
+    <div class="member-simple-card" style="border-color: var(--blue-light);">
+      <img src="heron.jpg" class="ms-avatar" alt="Pedro Henrique" onerror="this.src='https://ui-avatars.com/api/?name=Pedro+Henrique&background=1a6fd4&color=fff'">
+      <div class="ms-name">Pedro Henrique (Heron)</div>
     </div>
+
     <div class="member-simple-card">
-      <div class="ms-avatar">C</div>
-      <div class="ms-name">Carlos Rodrigo de Oliveira Ribeiro Bueno</div>
+      <img src="membro-camila.jpg" class="ms-avatar" alt="Camila Francisca" onerror="this.src='https://ui-avatars.com/api/?name=Camila+Francisca&background=1a6fd4&color=fff'">
+      <div class="ms-name">Camila Francisca</div>
     </div>
+
     <div class="member-simple-card">
-      <div class="ms-avatar">E</div>
-      <div class="ms-name">Eloiza Lopes de Souza Silva</div>
+      <img src="membro-carlos.jpg" class="ms-avatar" alt="Carlos Rodrigo" onerror="this.src='https://ui-avatars.com/api/?name=Carlos+Rodrigo&background=1a6fd4&color=fff'">
+      <div class="ms-name">Carlos Rodrigo</div>
     </div>
+
     <div class="member-simple-card">
-      <div class="ms-avatar">F</div>
-      <div class="ms-name">Felipe Henrique Ferreira Silva</div>
+      <img src="membro-eloiza.jpg" class="ms-avatar" alt="Eloiza Lopes" onerror="this.src='https://ui-avatars.com/api/?name=Eloiza+Lopes&background=1a6fd4&color=fff'">
+      <div class="ms-name">Eloiza Lopes</div>
     </div>
+    
     <div class="member-simple-card">
-      <div class="ms-avatar">G</div>
-      <div class="ms-name">Gabriel de Azevedo Kaneyassu</div>
+      <img src="membro-felipe.jpg" class="ms-avatar" alt="Felipe Henrique" onerror="this.src='https://ui-avatars.com/api/?name=Felipe+Henrique&background=1a6fd4&color=fff'">
+      <div class="ms-name">Felipe Henrique</div>
     </div>
+
     <div class="member-simple-card">
-      <div class="ms-avatar">G</div>
-      <div class="ms-name">Gabriel Gonzaga dos Santos</div>
+      <img src="membro-azevedo.jpg" class="ms-avatar" alt="Gabriel Azevedo" onerror="this.src='https://ui-avatars.com/api/?name=Gabriel+Azevedo&background=1a6fd4&color=fff'">
+      <div class="ms-name">Gabriel Azevedo</div>
     </div>
+
     <div class="member-simple-card">
-      <div class="ms-avatar">G</div>
-      <div class="ms-name">Gabriel Pintor Baptista</div>
+      <img src="membro-gonzaga.jpg" class="ms-avatar" alt="Gabriel Gonzaga" onerror="this.src='https://ui-avatars.com/api/?name=Gabriel+Gonzaga&background=1a6fd4&color=fff'">
+      <div class="ms-name">Gabriel Gonzaga</div>
     </div>
+
     <div class="member-simple-card">
-      <div class="ms-avatar">J</div>
-      <div class="ms-name">João Maerbal Nunes Barros</div>
+      <img src="membro-pintor.jpg" class="ms-avatar" alt="Gabriel Pintor" onerror="this.src='https://ui-avatars.com/api/?name=Gabriel+Pintor&background=1a6fd4&color=fff'">
+      <div class="ms-name">Gabriel Pintor</div>
     </div>
+
     <div class="member-simple-card">
-      <div class="ms-avatar">J</div>
-      <div class="ms-name">João Paulo Andrade Soares</div>
+      <img src="membro-maerbal.jpg" class="ms-avatar" alt="João Maerbal" onerror="this.src='https://ui-avatars.com/api/?name=Joao+Maerbal&background=1a6fd4&color=fff'">
+      <div class="ms-name">João Maerbal</div>
     </div>
+
     <div class="member-simple-card">
-      <div class="ms-avatar">J</div>
-      <div class="ms-name">Júlia da Silva Origuela</div>
+      <img src="membro-paulo.jpg" class="ms-avatar" alt="João Paulo" onerror="this.src='https://ui-avatars.com/api/?name=Joao+Paulo&background=1a6fd4&color=fff'">
+      <div class="ms-name">João Paulo</div>
     </div>
+
     <div class="member-simple-card">
-      <div class="ms-avatar">L</div>
-      <div class="ms-name">Laura Castro Capanema</div>
+      <img src="membro-julia.jpg" class="ms-avatar" alt="Júlia Origuela" onerror="this.src='https://ui-avatars.com/api/?name=Julia+Origuela&background=1a6fd4&color=fff'">
+      <div class="ms-name">Júlia Origuela</div>
     </div>
+
     <div class="member-simple-card">
-      <div class="ms-avatar">M</div>
-      <div class="ms-name">Murilo Pelegrini Tristão</div>
+      <img src="membro-laura.jpg" class="ms-avatar" alt="Laura Castro" onerror="this.src='https://ui-avatars.com/api/?name=Laura+Castro&background=1a6fd4&color=fff'">
+      <div class="ms-name">Laura Castro</div>
     </div>
+
     <div class="member-simple-card">
-      <div class="ms-avatar">P</div>
-      <div class="ms-name">Paula Luísa da Silveira Silva</div>
+      <img src="membro-murilo.jpg" class="ms-avatar" alt="Murilo Pelegrini" onerror="this.src='https://ui-avatars.com/api/?name=Murilo+Pelegrini&background=1a6fd4&color=fff'">
+      <div class="ms-name">Murilo Pelegrini</div>
     </div>
+
     <div class="member-simple-card">
-      <div class="ms-avatar">P</div>
-      <div class="ms-name">Pedro Henrique Barbosa de Freitas Soares</div>
+      <img src="membro-paula.jpg" class="ms-avatar" alt="Paula Luísa" onerror="this.src='https://ui-avatars.com/api/?name=Paula+Luisa&background=1a6fd4&color=fff'">
+      <div class="ms-name">Paula Luísa</div>
     </div>
+
     <div class="member-simple-card">
-      <div class="ms-avatar">S</div>
-      <div class="ms-name">Stefanny Ariel Teófilo</div>
-    </div>
-    <div class="member-simple-card">
-      <div class="ms-avatar">W</div>
-      <div class="ms-name">Wanessa Karoline Oliveira Silva</div>
+      <img src="membro-stefanny.jpg" class="ms-avatar" alt="Stefanny Ariel" onerror="this.src='https://ui-avatars.com/api/?name=Stefanny+Ariel&background=1a6fd4&color=fff'">
+      <div class="ms-name">Stefanny Ariel</div>
     </div>
   </div>
 
