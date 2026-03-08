@@ -9,13 +9,8 @@
 
 <script>
   (function() {
-    // Lista com os nomes dos seus arquivos de 40px
     const icons = ['favicon-verde.png', 'favicon-azul.png', 'favicon-branco.png'];
-    
-    // Sorteia um dos ícones
     const randomIcon = icons[Math.floor(Math.random() * icons.length)];
-    
-    // Aplica o ícone sorteado ao carregar a página
     document.getElementById('dynamic-favicon').setAttribute('href', randomIcon);
   })();
 </script>
@@ -26,7 +21,7 @@
   *{margin:0;padding:0;box-sizing:border-box;} html{scroll-behavior:smooth;}
   body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;overflow-x:hidden;}
   
-  /* ===== NAV ===== */
+  /* ===== NAVEGAÇÃO ===== */
   nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.94);backdrop-filter:blur(16px);border-bottom:2px solid var(--border);display:flex;justify-content:space-between;align-items:center;padding:0 3rem;height:68px;}
   .nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.5rem;color:var(--blue-dark);text-decoration:none;letter-spacing:0.05em;display:flex;align-items:center;gap:0.6rem;}
   .nav-dot{width:10px;height:10px;background:var(--green);border-radius:50%;}
@@ -35,7 +30,7 @@
   nav a{font-size:0.83rem;font-weight:600;color:var(--muted);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}
   nav a:hover{color:var(--blue);}
 
-  /* ===== HERO ===== */
+  /* ===== CABEÇALHO DO ARTIGO (HERO) ===== */
   .article-hero{background:linear-gradient(140deg,var(--green-dark),#2a6e1a,var(--blue-dark));padding:8rem 3rem 5rem;position:relative;overflow:hidden;}
   .article-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.08) 1.5px,transparent 1.5px);background-size:26px 26px;pointer-events:none;}
   .article-hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:70px;background:var(--bg);clip-path:polygon(0 60%,100% 0%,100% 100%,0% 100%);}
@@ -50,7 +45,7 @@
   .article-hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,6vw,4rem);font-weight:900;color:#fff;text-transform:uppercase;line-height:0.95;margin-bottom:1.5rem;}
   .article-hero .subtitle{font-size:1.1rem;color:rgba(255,255,255,0.7);line-height:1.72;font-weight:300;}
 
-  /* ===== CONTENT ===== */
+  /* ===== CONTEÚDO DO POST ===== */
   .article-wrap{max-width:780px;margin:0 auto;padding:4rem 3rem;}
   .share-bar{display:flex;align-items:center;gap:1rem;padding:1.25rem 1.5rem;background:var(--white);border:2px solid var(--border);margin-bottom:3rem;flex-wrap:wrap;}
   .share-label{font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;}
@@ -76,9 +71,139 @@
 
   .code-block{background:#0d2a50;color:#c8dff5;padding:1.5rem;font-family:'Space Mono',monospace;font-size:0.85rem;line-height:1.75;margin:2rem 0;overflow-x:auto;border-left:4px solid var(--green);}
 
-  /* ===== COMMENTS ===== */
+  /* ===== NOVO CTA (Acompanhe o GAIA) ===== */
+  .back-cta {
+    background: linear-gradient(135deg, var(--blue-dark), var(--blue-deep));
+    padding: 4rem 2rem;
+    margin-top: 5rem;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  }
+  .back-cta::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: var(--green);
+    filter: blur(120px);
+    opacity: 0.1;
+    bottom: -150px;
+    right: -150px;
+    pointer-events: none;
+  }
+  .back-cta h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2.2rem;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+  }
+  .back-cta p {
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 600px;
+    font-size: 1.1rem;
+    margin: 0 auto;
+  }
+  .btn-p {
+    background: var(--green);
+    color: #fff;
+    padding: 1rem 2.5rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+    z-index: 1;
+  }
+  .btn-p:hover {
+    background: var(--white);
+    color: var(--blue-dark);
+    transform: translateY(-3px);
+  }
+
+  /* ===== COMENTÁRIOS ===== */
   .comments-section { margin-top: 4rem; padding-top: 3rem; border-top: 2px solid var(--border); }
   .comments-section h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; font-weight: 900; color: var(--blue-dark); text-transform: uppercase; margin-bottom: 1.5rem; }
+
+  /* ===== NOVO RODAPÉ (FOOTER) EM COLUNAS ===== */
+  footer {
+    background: #020817;
+    padding: 6rem 3rem 3rem;
+    color: #fff;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .footer-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 5rem;
+  }
+  .footer-brand .fl {
+    font-size: 1.8rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+  .footer-brand .fl span { color: var(--green); }
+  .footer-brand p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 320px;
+  }
+  .footer-col h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.8rem;
+    color: var(--green);
+    font-weight: 800;
+  }
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .footer-links a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+  }
+  .footer-links a:hover {
+    color: var(--white);
+    padding-left: 5px;
+  }
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+  }
 
   .menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; color: var(--blue-dark); cursor: pointer; }
 
@@ -89,8 +214,9 @@
     nav{padding:0 1.5rem;}
     .article-wrap{padding:3rem 1.5rem;}
     .article-hero{padding-left:1.5rem;padding-right:1.5rem;}
-    .next-grid{grid-template-columns:1fr 1fr;}
-    .back-cta{flex-direction:column;text-align:center;}
+    .footer-grid { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+    .footer-brand p { margin: 0 auto; }
+    .footer-bottom { flex-direction: column; gap: 1.5rem; text-align: center; }
   }
 </style>
 </head>
@@ -189,43 +315,61 @@ void loop() {
     <p>Em nosso <strong>Robô Corredor</strong>, o Arduino processa os dados de encoders ópticos para calcular a odometria em tempo real. Essa precisão é o que permite que o robô mantenha sua trajetória em alta velocidade sem auxílio externo.</p>
   </div>
 
-  <section class="comments-section">
-    <h3>Discussão e Comentários</h3>
-    <script src="https://giscus.app/client.js"
-            data-repo="GaiaRobotca/gaiarobotica-new.github.io"
-            data-repo-id="R_kgDORhLuBw"
-            data-category="General"
-            data-category-id="DIC_kwDORhLuB84C37IJ"
-            data-mapping="pathname"
-            data-strict="1"
-            data-reactions-enabled="1"
-            data-emit-metadata="0"
-            data-input-position="bottom"
-            data-theme="light"
-            data-lang="pt"
-            crossorigin="anonymous"
-            async>
-    </script>
-  </section>
-
   <div class="back-cta">
-    <div>
-      <strong>Quer aprender na prática?</strong>
-      <p>Participe das nossas oficinas de Arduino e solda. Siga o Instagram para as próximas datas.</p>
-    </div>
-    <a href="https://www.instagram.com/gaia.robotica/" target="_blank" class="btn-p">@gaia.robotica →</a>
+    <h3>Quer aprender na prática?</h3>
+    <p>Participe das nossas oficinas presenciais de Arduino, eletrônica e solda na UFTM. Siga o GAIA para não perder as próximas datas.</p>
+    <a href="https://www.instagram.com/gaia.robotica/" target="_blank" class="btn-p">Acompanhar no Instagram →</a>
   </div>
 </div>
 
+<section class="comments-section" style="max-width: 780px; margin: 0 auto; padding: 0 3rem;">
+  <h3>Discussão Técnica</h3>
+  <script src="https://giscus.app/client.js"
+          data-repo="GaiaRobotca/gaiarobotica-new.github.io"
+          data-repo-id="R_kgDORhLuBw"
+          data-category="General"
+          data-category-id="DIC_kwDORhLuB84C37IJ"
+          data-mapping="pathname"
+          data-strict="1"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="light"
+          data-lang="pt"
+          crossorigin="anonymous"
+          async>
+  </script>
+</section>
+
 <footer>
-  <div class="fl">GAIA <span>ROBÓTICA</span></div>
-  <p>UFTM · Uberaba, MG · 2023</p>
-  <div class="flinks">
-    <a href="index.html">Home</a>
-    <a href="aprenda.html">Aprenda</a>
-    <a href="patrocine.html">Patrocine</a>
-    <a href="https://www.instagram.com/gaia.robotica/" target="_blank">Instagram</a>
-    <a href="https://github.com/gaiarobotica" target="_blank">GitHub</a>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="fl">GAIA <span>ROBÓTICA</span></span>
+      <p>Desenvolvendo tecnologias autônomas e democratizando o conhecimento em robótica e sistemas embarcados na UFTM.</p>
+    </div>
+    
+    <div class="footer-col">
+      <h4>Navegação</h4>
+      <ul class="footer-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="aprenda.html">Aprenda</a></li>
+        <li><a href="patrocine.html">Patrocine</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Comunidade</h4>
+      <ul class="footer-links">
+        <li><a href="https://www.instagram.com/gaia.robotica/" target="_blank">Instagram</a></li>
+        <li><a href="https://github.com/gaiarobotica" target="_blank">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/company/gaiarobotica" target="_blank">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>&copy; 2026 GAIA ROBÓTICA · UFTM</div>
+    <div>UBERABA · MINAS GERAIS · BRAZIL</div>
   </div>
 </footer>
 
@@ -233,7 +377,7 @@ void loop() {
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 <script>
-  // Menu Hambúrguer
+  // Menu Hambúrguer para Celulares
   const menuToggle = document.querySelector('.menu-toggle');
   const navMenu = document.querySelector('nav ul');
   if(menuToggle && navMenu) {
