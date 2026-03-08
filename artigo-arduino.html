@@ -49,7 +49,7 @@
   .post-recente-item { display: flex; gap: 1.2rem; margin-bottom: 1.8rem; text-decoration: none; align-items: center; transition: transform 0.2s; }
   .post-recente-item:hover { transform: translateX(5px); }
   .post-recente-thumb { width: 80px; height: 60px; border-radius: 4px; object-fit: cover; border: 1px solid var(--border); }
-  .post-recente-titulo { font-family: 'Barlow', sans-serif; font-size: 0.95rem; font-weight: 700; color: #8b2020; line-height: 1.3; }
+  .post-recente-titulo { font-family: 'Barlow', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--blue); line-height: 1.3; }
 
   /* Estilos do Conteúdo */
   .main-image img { width: 100%; height: 400px; object-fit: cover; border-radius: 4px; margin-bottom: 3rem; border: 2px solid var(--border); }
@@ -57,7 +57,7 @@
   .article-content p{font-size:1.05rem;line-height:1.82;color:var(--text);margin-bottom:1.3rem;}
   .code-block{background:#0d2a50;color:#c8dff5;padding:1.5rem;font-family:'Space Mono',monospace;font-size:0.85rem;margin:2rem 0;border-left:4px solid var(--green);overflow-x:auto;}
 
-  /* Rodapé e CTA Profissional */
+  /* CTA e Rodapé */
   .back-cta { background: linear-gradient(135deg, var(--blue-dark), var(--blue-deep)); padding: 4rem 2rem; margin-top: 5rem; border-radius: 16px; text-align: center; color: #fff; position: relative; overflow: hidden; }
   .btn-p { background: var(--green); color: #fff; padding: 1rem 2.5rem; font-weight: 800; text-transform: uppercase; text-decoration: none; display: inline-block; margin-top: 1.5rem; clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%); }
   
@@ -88,7 +88,7 @@
 <div class="article-hero">
   <div class="hero-inner">
     <div class="breadcrumb"><a href="index.html">Home</a> › <a href="aprenda.html">Aprenda</a> › Arduino</div>
-    <div class="article-meta"><span class="meta-pill">Hardware</span> <span class="meta-pill">8 min</span></div>
+    <div class="article-meta"><span class="meta-pill">Hardware & Embarcados</span> <span class="meta-pill">8 min de leitura</span></div>
     <h1>ARDUINO:<br>A PONTE ENTRE A LÓGICA E A ELETRÔNICA</h1>
   </div>
 </div>
@@ -97,49 +97,70 @@
   <div class="container-leitura">
     <article class="article-content-main">
       <div class="main-image">
-        <img src="https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&w=1200" alt="Arduino Uno">
+        <img src="https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&w=1200" alt="Placa Arduino Uno">
       </div>
       <div class="article-content">
-        <p>O Arduino é o cérebro dos nossos projetos na <strong>GAIA Robótica</strong>. Usamos esta plataforma para controlar desde os motores do Robô Omnidirecional até a telemetria básica dos nossos drones em Uberaba.</p>
+        <p>O Arduino é uma ferramenta essencial na <strong>GAIA Robótica</strong>. Através dele, transformamos linhas de código C++ em movimentos físicos nos nossos robôs e telemetria precisa para os drones.</p>
         
-        <h2>O Cérebro: ATMega328P</h2>
-        <p>Este microcontrolador de 8 bits permite a execução de instruções em um único ciclo de clock, abstraindo funções complexas em código legível.</p>
+        <h2>1. O Cérebro: ATMega328P</h2>
+        <p>Ao nível da engenharia, olhamos para o <strong>ATmega328P</strong>. Este microcontrolador possui arquitetura RISC avançada, permitindo a execução de instruções em ciclos de clock únicos e eficientes.</p>
 
         <div class="code-block">
-void setup() { pinMode(13, OUTPUT); }
-void loop() { digitalWrite(13, HIGH); delay(1000); }
+void setup() {
+  pinMode(13, OUTPUT); // Configura o pino como saída
+}
+
+void loop() {
+  digitalWrite(13, HIGH); // Satura a saída em 5V
+  delay(1000);
+  digitalWrite(13, LOW);  // Corta a saída
+  delay(1000);
+}
         </div>
+
+        <h2>2. Modulação por Largura de Pulso (PWM)</h2>
+        <p>Como o Arduino não possui saídas analógicas puras, usamos o <strong>PWM</strong> para variar a velocidade de motores DC e o brilho de LEDs, variando a tensão média aplicada.</p>
       </div>
 
       <section class="comments-section">
+        <h3>Discussão Técnica</h3>
         <script src="https://giscus.app/client.js" data-repo="GaiaRobotca/gaiarobotica-new.github.io" data-repo-id="R_kgDORhLuBw" data-category="General" data-category-id="DIC_kwDORhLuB84C37IJ" data-mapping="pathname" data-theme="light" data-lang="pt" crossorigin="anonymous" async></script>
       </section>
     </article>
 
     <aside class="sidebar-posts">
       <h3>Posts Recentes</h3>
+      
       <a href="artigo-visao.html" class="post-recente-item">
         <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?auto=format&fit=crop&w=80" class="post-recente-thumb">
         <span class="post-recente-titulo">O que é Visão Computacional?</span>
       </a>
+
       <a href="artigo-pid.html" class="post-recente-item">
         <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?auto=format&fit=crop&w=80" class="post-recente-thumb">
-        <span class="post-recente-titulo">Controle PID: O Segredo da Precisão</span>
+        <span class="post-recente-titulo">Controle PID: Robôs Precisos</span>
       </a>
+
       <a href="artigo-ia.html" class="post-recente-item">
         <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=80" class="post-recente-thumb">
         <span class="post-recente-titulo">Inteligência Artificial na Robótica</span>
       </a>
+
       <a href="artigo-drones.html" class="post-recente-item">
         <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=80" class="post-recente-thumb">
         <span class="post-recente-titulo">Como um Drone Consegue Voar?</span>
+      </a>
+
+      <a href="artigo-solda.html" class="post-recente-item">
+        <img src="https://image.slidesharecdn.com/gaiasoldafinal-160523235450/85/gaiasoldafinal-15-2048.jpg" class="post-recente-thumb">
+        <span class="post-recente-titulo">Guia de Solda para Iniciantes</span>
       </a>
     </aside>
   </div>
 
   <div class="back-cta">
     <h3>Quer aprender na prática?</h3>
-    <p>Participe das nossas oficinas de Arduino e solda na UFTM.</p>
+    <p>Participe das nossas oficinas presenciais de Arduino e eletrónica na UFTM.</p>
     <a href="https://www.instagram.com/gaia.robotica/" target="_blank" class="btn-p">Acompanhar no Instagram →</a>
   </div>
 </div>
@@ -148,7 +169,7 @@ void loop() { digitalWrite(13, HIGH); delay(1000); }
   <div class="footer-grid">
     <div class="footer-brand">
       <span class="fl">GAIA <span>ROBÓTICA</span></span>
-      <p>Tecnologias autônomas e sistemas embarcados na UFTM.</p>
+      <p>Desenvolvendo tecnologias autónomas e democratizando o conhecimento na UFTM.</p>
     </div>
     <div class="footer-col">
       <h4>Navegação</h4>
