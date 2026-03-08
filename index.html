@@ -279,6 +279,21 @@
   .p-title { font-weight:600; color:var(--blue-dark); font-size:0.97rem; }
   .p-cat { font-family:'Space Mono',monospace; font-size:0.62rem; color:var(--green-dark); text-transform:uppercase; letter-spacing:0.1em; background:rgba(92,184,46,0.12); padding:0.28rem 0.65rem; white-space:nowrap; }
 
+  /* ===== CONTATO ===== */
+  .contato-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem; }
+  .ps-banner { background: var(--green); color: #fff; padding: 1.5rem; border-radius: 8px; display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; text-decoration: none; }
+  .ps-banner-icon { font-size: 2rem; }
+  .ps-banner-title { font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.9rem; }
+  .ps-banner-link { font-size: 0.8rem; color: rgba(255,255,255,0.8); }
+  .c-links { display: flex; flex-direction: column; gap: 1rem; }
+  .c-link { display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
+  .c-link:hover { color: #fff; }
+  .c-icon { font-size: 1.1rem; width: 1.5rem; text-align: center; }
+
+  .msg-box { background: rgba(255,255,255,0.05); padding: 3rem; border: 1px dashed rgba(255,255,255,0.2); text-align: center; border-radius: 12px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+  .msg-title { color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; margin-bottom: 1rem; text-transform: uppercase;}
+  .msg-p { color: rgba(255,255,255,0.7); margin-bottom: 2rem; font-size: 0.95rem; line-height: 1.6; max-width: 320px;}
+
   /* ===== FOOTER ===== */
   footer { background:#040e22; padding:2.5rem 3rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
   .fl { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:1.3rem; color:#fff; letter-spacing:0.08em; }
@@ -306,7 +321,7 @@
     nav ul { display: none; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); padding: 2rem; border-bottom: 2px solid var(--border); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); text-align: center; }
     nav ul.active { display: flex; }
     nav{padding:0 1.5rem;}
-    .about-grid,.missao-grid,.leadership{grid-template-columns:1fr;gap:2rem;}
+    .about-grid,.missao-grid,.leadership,.contato-wrapper{grid-template-columns:1fr;gap:2rem;}
     .docentes{grid-template-columns:1fr;}
     .awards-grid,.ativ-grid,.proj-grid,.nome-grid,.parc-grid{grid-template-columns:1fr 1fr;}
     .members-grid { grid-template-columns: 1fr 1fr; }
@@ -644,7 +659,7 @@
   <div class="members-grid">
     <div class="member-simple-card" style="border-color: var(--blue-light);">
       <img src="heron.jpg" class="ms-avatar" alt="Pedro Henrique" onerror="this.src='https://ui-avatars.com/api/?name=Pedro+Henrique&background=1a6fd4&color=fff'">
-      <div class="ms-name">Pedro Henrique (Heron)</div>
+      <div class="ms-name">Pedro Henrique</div>
     </div>
 
     <div class="member-simple-card">
@@ -781,35 +796,35 @@
 </div>
 </section>
 
-<section style="background:linear-gradient(140deg,var(--blue-deep) 0%,var(--blue-dark) 50%,var(--blue-mid) 100%);padding-top:5rem;">
+<section style="background:linear-gradient(140deg,var(--blue-deep) 0%,var(--blue-dark) 50%,var(--blue-mid) 100%);padding-top:5rem;" id="contato">
 <div class="sec" style="padding-top:2rem;">
   <div class="sec-tag">// fale com a gente</div>
-  <h2 style="color:#fff;">Contato</h2>
+  <h2 style="color:#fff;">Contato e Redes Sociais</h2>
   <p class="lead" style="color:rgba(255,255,255,0.6);">Quer colaborar, participar ou levar robótica para sua escola? Estamos aqui.</p>
-  <div class="contato-grid">
+  
+  <div class="contato-wrapper">
     <div>
-      <div class="ps-banner">
+      <a href="https://forms.gle/ZCEZbn97UaExt7J58" target="_blank" class="ps-banner">
         <div class="ps-banner-icon">📋</div>
         <div>
           <div class="ps-banner-title">Processo Seletivo 2025.2 Aberto!</div>
-          <a href="https://forms.gle/ZCEZbn97UaExt7J58" target="_blank" class="ps-banner-link">Clique para se inscrever →</a>
+          <div class="ps-banner-link">Clique para se inscrever →</div>
         </div>
-      </div>
+      </a>
       <div class="c-links">
         <a href="mailto:gaia.robotica.uftm@gmail.com" class="c-link"><span class="c-icon">✉️</span>gaia.robotica.uftm@gmail.com</a>
         <a href="https://www.instagram.com/gaia.robotica/" target="_blank" class="c-link"><span class="c-icon">📸</span>@gaia.robotica — Instagram</a>
-        <a href="https://www.facebook.com/gaiarobotica" target="_blank" class="c-link"><span class="c-icon">👥</span>facebook.com/gaiarobotica</a>
-        <a href="https://www.linkedin.com/company/gaiarobotica" target="_blank" class="c-link"><span class="c-icon">💼</span>linkedin.com/company/gaiarobotica</a>
         <a href="https://github.com/gaiarobotica" target="_blank" class="c-link"><span class="c-icon">💻</span>github.com/gaiarobotica</a>
         <a href="https://linktr.ee/gaiarobotica" target="_blank" class="c-link"><span class="c-icon">🔗</span>linktr.ee/gaiarobotica</a>
-        <a href="#" class="c-link"><span class="c-icon">📍</span>UFTM · Uberaba, Minas Gerais</a>
+        <a href="https://www.linkedin.com/company/gaiarobotica" target="_blank" class="c-link"><span class="c-icon">💼</span>LinkedIn</a>
+        <a href="#" class="c-link"><span class="c-icon">📍</span>UFTM · Uberaba, MG</a>
       </div>
     </div>
     
-    <div style="background: rgba(255,255,255,0.05); padding: 3rem; border: 1px dashed rgba(255,255,255,0.2); text-align: center; border-radius: 12px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-      <h3 style="color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; margin-bottom: 1rem;">Envie-nos uma Mensagem</h3>
-      <p style="color: rgba(255,255,255,0.7); margin-bottom: 2rem;">Utilize o nosso novo formulário direto para entrar em contacto com a equipa do GAIA Robótica.</p>
-      <a href="contato.html" class="btn-p">Aceder à Página de Contato →</a>
+    <div class="msg-box">
+      <h3 class="msg-title">Envie uma Mensagem</h3>
+      <p class="msg-p">Utilize o nosso novo formulário direto para entrar em contacto com a equipa do GAIA Robótica.</p>
+      <a href="contato.html" class="btn-p" style="text-decoration:none;">Página de Contato →</a>
     </div>
     
   </div>
@@ -828,12 +843,6 @@
       <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--green);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.5rem;">// conteúdo técnico</div>
       <div style="font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:900;color:#fff;text-transform:uppercase;line-height:1;margin-bottom:0.75rem;">Aprenda<br>com a GAIA</div>
       <p style="font-size:0.9rem;color:rgba(255,255,255,0.6);line-height:1.65;margin-bottom:1.5rem;">IA, Arduino, drones e robótica explicados do zero. Artigos completos para estudantes e curiosos.</p>
-      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.5rem;">
-        <span style="font-family:'Space Mono',monospace;font-size:0.6rem;padding:0.25rem 0.6rem;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.5);text-transform:uppercase;">IA</span>
-        <span style="font-family:'Space Mono',monospace;font-size:0.6rem;padding:0.25rem 0.6rem;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.5);text-transform:uppercase;">Arduino</span>
-        <span style="font-family:'Space Mono',monospace;font-size:0.6rem;padding:0.25rem 0.6rem;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.5);text-transform:uppercase;">Drones</span>
-        <span style="font-family:'Space Mono',monospace;font-size:0.6rem;padding:0.25rem 0.6rem;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.5);text-transform:uppercase;">Robótica</span>
-      </div>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;color:var(--blue-light);letter-spacing:0.1em;text-transform:uppercase;">Ver todos os artigos →</span>
     </a>
 
@@ -842,60 +851,43 @@
       <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:rgba(255,255,255,0.6);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.5rem;">// empresas & parceiros</div>
       <div style="font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:900;color:#fff;text-transform:uppercase;line-height:1;margin-bottom:0.75rem;">Seja<br>Patrocinador</div>
       <p style="font-size:0.9rem;color:rgba(255,255,255,0.7);line-height:1.65;margin-bottom:1.5rem;">Sua empresa ao lado de uma equipe que já está no pódio nacional. Visibilidade, impacto social e acesso a talentos da UFTM.</p>
-      <div style="display:flex;gap:2rem;margin-bottom:1.5rem;">
-        <div style="text-align:center;">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:900;color:#fff;line-height:1;">3°</div>
-          <div style="font-size:0.72rem;color:rgba(255,255,255,0.6);">SAE Brasil</div>
-        </div>
-        <div style="text-align:center;">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:900;color:#fff;line-height:1;">2°</div>
-          <div style="font-size:0.72rem;color:rgba(255,255,255,0.6);">HackaGIS</div>
-        </div>
-        <div style="text-align:center;">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:900;color:#fff;line-height:1;">7+</div>
-          <div style="font-size:0.72rem;color:rgba(255,255,255,0.6);">Robôs</div>
-        </div>
-      </div>
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;color:#fff;letter-spacing:0.1em;text-transform:uppercase;">Ver cotas de patrocínio →</span>
     </a>
 
   </div>
-
-  <div style="margin-top:1.5rem;background:var(--surface);border:2px solid var(--border);padding:2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;">
-    <div>
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:900;color:var(--blue-dark);text-transform:uppercase;margin-bottom:0.3rem;">Conhece alguém que deveria saber da GAIA?</div>
-      <p style="font-size:0.88rem;color:var(--muted);">Compartilhe o projeto com estudantes, professores ou empresas que possam se interessar.</p>
-    </div>
-    <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-      <a href="https://wa.me/?text=Conhe%C3%A7a%20o%20GAIA%20Rob%C3%B3tica%20-%20projeto%20de%20extens%C3%A3o%20da%20UFTM%20com%203%C2%B0%20lugar%20na%20SAE%20Brasil!%20gaiarobotica.github.io" target="_blank" style="font-family:'Space Mono',monospace;font-size:0.7rem;padding:0.55rem 1.1rem;border:2px solid var(--green);color:var(--green);text-decoration:none;text-transform:uppercase;letter-spacing:0.08em;transition:all 0.2s;background:transparent;" onmouseover="this.style.background='var(--green)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--green)'">💬 WhatsApp</a>
-      <a href="https://www.linkedin.com/sharing/share-offsite/?url=gaiarobotica.github.io" target="_blank" style="font-family:'Space Mono',monospace;font-size:0.7rem;padding:0.55rem 1.1rem;border:2px solid var(--blue);color:var(--blue);text-decoration:none;text-transform:uppercase;letter-spacing:0.08em;transition:all 0.2s;background:transparent;" onmouseover="this.style.background='var(--blue)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--blue)'">💼 LinkedIn</a>
-      <a href="https://www.instagram.com/gaia.robotica/" target="_blank" style="font-family:'Space Mono',monospace;font-size:0.7rem;padding:0.55rem 1.1rem;border:2px solid var(--muted);color:var(--muted);text-decoration:none;text-transform:uppercase;letter-spacing:0.08em;transition:all 0.2s;background:transparent;" onmouseover="this.style.borderColor='var(--blue-dark)';this.style.color='var(--blue-dark)'" onmouseout="this.style.borderColor='var(--muted)';this.style.color='var(--muted)'">📸 Instagram</a>
-    </div>
-  </div>
-
 </div>
 </section>
 
 <footer>
   <div class="fl">GAIA <span>ROBÓTICA</span></div>
-  <p>Projeto de Extensão · UFTM · Uberaba, MG · Fundado em 2023</p>
+  <p>UFTM · Uberaba, MG · Fundado em 2023</p>
   <div class="footer-links">
-    <a href="aprenda.html">Aprenda</a>
-    <a href="patrocine.html">Patrocine</a>
+    <a href="index.html#conquistas">Conquistas</a>
     <a href="https://www.instagram.com/gaia.robotica/" target="_blank">Instagram</a>
     <a href="https://github.com/gaiarobotica" target="_blank">GitHub</a>
-    <a href="https://linktr.ee/gaiarobotica" target="_blank">Linktree</a>
   </div>
 </footer>
 
 <script>
+  // Script para fechar o menu no mobile após clicar num link
   const menuToggle = document.querySelector('.menu-toggle');
   const navMenu = document.querySelector('nav ul');
+  const navLinks = document.querySelectorAll('nav ul li a');
 
   if(menuToggle && navMenu) {
     menuToggle.addEventListener('click', () => {
       navMenu.classList.toggle('active');
       menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+    });
+
+    // Fecha o menu ao clicar em qualquer link (importante para âncoras na mesma página)
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (navMenu.classList.contains('active')) {
+          navMenu.classList.remove('active');
+          menuToggle.textContent = '☰';
+        }
+      });
     });
   }
 </script>
