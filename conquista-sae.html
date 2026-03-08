@@ -45,6 +45,9 @@
   .article-wrap{max-width:1200px;margin:0 auto;padding:4rem 3rem;}
   .container-leitura { display: grid; grid-template-columns: 1fr 350px; gap: 4rem; }
 
+  /* A MÁGICA QUE IMPEDE O SITE DE QUEBRAR (GRID BLOWOUT FIX) */
+  .article-content-main { min-width: 0; }
+
   /* Sidebar */
   .sidebar-posts { position: sticky; top: 100px; height: fit-content; }
   .sidebar-posts h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; font-weight: 900; margin-bottom: 2rem; text-transform: uppercase; color: var(--blue-dark); }
@@ -54,33 +57,36 @@
   .post-recente-titulo { font-family: 'Barlow', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--blue); line-height: 1.3; }
 
   /* ========================================================
-     NOVA CONFIGURAÇÃO DE IMAGENS (Problema do Zoom Resolvido)
+     NOVA CONFIGURAÇÃO DE IMAGENS (Sem cortes e sem ecrã quebrado)
      ======================================================== */
   .main-image {
-    text-align: center; /* Centra a imagem se ela for mais estreita que o texto */
+    width: 100%;
+    height: 450px; /* Altura fixa da caixa */
+    background-color: #051633; /* Fundo azul escuro cinemático */
+    border-radius: 8px;
     margin-bottom: 3rem;
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
   }
   
   .main-image img { 
-    max-width: 100%; 
-    max-height: 500px; /* Impede que a foto ocupe o ecrã inteiro em altura */
-    height: auto; /* Mantém a proporção original sem esticar nem cortar */
-    object-fit: contain; /* Mostra a imagem inteira dentro do limite */
-    border-radius: 8px; 
-    border: 2px solid var(--border); 
-    background-color: #0a192f; /* Fundo escuro elegante para o espaço que sobrar */
+    width: 100%; 
+    height: 100%;
+    object-fit: contain; /* Faz a foto caber inteira dentro da caixa sem cortar */
   }
   
   .inline-img { 
-    max-width: 100%; 
-    max-height: 400px; /* Limite de altura seguro */
-    height: auto; /* Mantém a proporção original */
-    object-fit: contain; /* Não corta a imagem */
+    width: 100%; 
+    height: 450px; 
+    background-color: #051633;
     border-radius: 8px; 
-    margin: 1.5rem auto; /* Centra a imagem com margem em cima e em baixo */
-    border: 1px solid var(--border); 
-    background-color: #0a192f;
-    display: block; /* Necessário para o margin auto funcionar */
+    margin: 1.5rem 0; 
+    border: 2px solid var(--border); 
+    object-fit: contain; /* Faz a foto caber inteira sem zoom */
+    display: block;
   }
   
   .article-content h2{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:900;color:var(--blue-dark);text-transform:uppercase;margin:3rem 0 1rem;border-bottom:2px solid var(--surface);padding-bottom:0.5rem;}
@@ -99,15 +105,16 @@
     width: 100%; 
     border-radius: 8px; 
     position: relative; 
-    background: #0a192f; 
-    border: 2px solid var(--blue-deep);
+    background: #051633; 
+    border: 2px solid var(--border);
   }
   
   .carousel-track { display: flex; transition: transform 0.4s ease-in-out; }
   
   .carousel-slide { 
-    min-width: 100%; 
-    height: 500px; 
+    width: 100%; 
+    flex-shrink: 0; /* Impede que o carrossel amasse as fotos */
+    height: 450px; 
     object-fit: contain; 
   }
   
@@ -142,7 +149,7 @@
     .container-leitura { grid-template-columns: 1fr; }
     .sidebar-posts { margin-top: 4rem; position: static; }
     .footer-grid { grid-template-columns: 1fr; text-align: center; }
-    .carousel-slide { height: 350px; }
+    .carousel-slide, .main-image, .inline-img { height: 350px; }
   }
 </style>
 
@@ -202,7 +209,7 @@
         <p>Durante o evento, a pressão era constante. A competição exigia não apenas que o drone voasse, mas que operasse com autonomia, navegasse por coordenadas, reconhecesse alvos no solo e realizasse o acionamento de mecanismos (como a nossa garra mecânica) no tempo exato. A estabilidade do sinal de telemetria e o ajuste fino do controle PID sob condições climáticas adversas foram os nossos maiores desafios em campo.</p>
 
         <img src="Preparosparaacompeticao.jpg" class="inline-img" alt="Equipe preparando o drone e ajustando o código na bancada" onerror="handleImageError(this)">
-        <p style="text-align: center; font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem; margin-bottom: 2rem;">Ajuste fino de código e calibração de hardware momentos antes do voo oficial.</p>
+        <p style="text-align: center; font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--muted); margin-top: -1rem; margin-bottom: 2rem;">Ajuste fino de código e calibração de hardware momentos antes do voo oficial.</p>
 
         <div class="carousel-wrap">
           <div class="carousel-title">Bastidores do Evento</div>
@@ -212,7 +219,7 @@
               <img src="IMG_7491.jpg" class="carousel-slide" alt="Equipe celebrando o 3º lugar" onerror="handleImageError(this)">
               <img src="IMG_7527.jpg" class="carousel-slide" alt="Equipe com a van" onerror="handleImageError(this)">
               <img src="IMG_7522.jpg" class="carousel-slide" alt="Meninas com o cheque" onerror="handleImageError(this)">
-              <img src="J%C3%BAlia%20e%20Wanessa.jpg" class="carousel-slide" alt="Júlia e Wanessa" onerror="handleImageError(this)">
+              <img src="Júlia%20e%20Wanessa.jpg" class="carousel-slide" alt="Júlia e Wanessa" onerror="handleImageError(this)">
               <img src="IMG_7431.jpg" class="carousel-slide" alt="Meninas com o drone" onerror="handleImageError(this)">
               <img src="IMG_7633.jpg" class="carousel-slide" alt="Inspeção técnica do Drone" onerror="handleImageError(this)">
               <img src="IMG_7627.jpg" class="carousel-slide" alt="Trabalhando no drone" onerror="handleImageError(this)">
@@ -252,7 +259,7 @@
         <p>Essa vitória impulsiona o GAIA Robótica para um novo patamar dentro e fora da UFTM. Mostrou à comunidade acadêmica a capacidade da equipe de trabalhar com o estado da arte em sistemas de voo autônomo e abre portas para parcerias com indústrias do setor de inovação e agronegócio no Triângulo Mineiro.</p>
         
         <img src="Equipe.jpg" class="inline-img" alt="Equipe GAIA Robótica reunida celebrando" onerror="handleImageError(this)">
-        <p style="text-align: center; font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem;">A equipe reunida: o motor humano por trás do projeto autônomo.</p>
+        <p style="text-align: center; font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--muted); margin-top: -1rem;">A equipe reunida: o motor humano por trás do projeto autônomo.</p>
 
       </div>
     </article>
