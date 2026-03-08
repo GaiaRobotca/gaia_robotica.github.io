@@ -10,127 +10,121 @@
   *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
   body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;}
   
-  /* NAVBAR */
   nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.94);backdrop-filter:blur(16px);border-bottom:2px solid var(--border);display:flex;justify-content:space-between;align-items:center;padding:0 3rem;height:68px;}
-  .nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.5rem;color:var(--blue-dark);text-decoration:none;letter-spacing:0.05em;display:flex;align-items:center;gap:0.6rem;}
+  .nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.5rem;color:var(--blue-dark);text-decoration:none;display:flex;align-items:center;gap:0.6rem;}
   .nav-dot{width:10px;height:10px;background:var(--green);border-radius:50%;}
   .nav-logo .g{color:var(--green);}
-  nav ul{list-style:none;display:flex;gap:2.2rem;}
-  nav a{font-size:0.83rem;font-weight:600;color:var(--muted);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}
-  nav a:hover{color:var(--blue);}
-
-  /* HERO */
-  .post-hero{background:linear-gradient(140deg,#0a0a1a,#1a1a4e,#2d2d8e);padding:8rem 3rem 5rem;position:relative;overflow:hidden;}
-  .post-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.09) 1.5px,transparent 1.5px);background-size:28px 28px;}
-  .post-hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:70px;background:var(--bg);clip-path:polygon(0 60%,100% 0%,100% 100%,0% 100%);}
-  .hero-inner{max-width:800px;margin:0 auto;position:relative;z-index:1;}
-  .breadcrumb{font-family:'Space Mono',monospace;font-size:0.68rem;color:rgba(255,255,255,0.5);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;}
-  .breadcrumb a{color:rgba(255,255,255,0.5);text-decoration:none;}
-  .post-cat{font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--green);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem;}
-  .post-cat::before{content:'';width:16px;height:2px;background:var(--green);}
-  .post-hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;color:#fff;text-transform:uppercase;line-height:1;margin-bottom:1.5rem;}
-  .post-meta{display:flex;gap:2rem;color:rgba(255,255,255,0.5);font-family:'Space Mono',monospace;font-size:0.68rem;text-transform:uppercase;}
-
-  /* CONTEÚDO */
-  .post-body{max-width:800px;margin:0 auto;padding:4rem 3rem 6rem;}
-  .post-body h2{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:900;color:var(--blue-dark);text-transform:uppercase;margin:2.5rem 0 1rem;line-height:1;}
-  .post-body p{font-size:1.1rem;color:var(--text);line-height:1.8;margin-bottom:1.5rem;}
   
-  .highlight-box{background:var(--blue-dark);clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%);padding:2rem;margin:2.5rem 0;color:white;}
-  .highlight-box strong{color:var(--green);}
+  .post-hero{background:linear-gradient(140deg,#0a0a1a,#1a1a4e,#2d2d8e);padding:8rem 3rem 5rem;position:relative;overflow:hidden;}
+  .post-hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:70px;background:var(--bg);clip-path:polygon(0 60%,100% 0%,100% 100%,0% 100%);}
+  .hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;}
+  .post-cat{font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--green);text-transform:uppercase;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem;}
+  .post-cat::before{content:'';width:16px;height:2px;background:var(--green);}
+  .post-hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;color:#fff;text-transform:uppercase;line-height:1;margin-bottom:1rem;}
+  
+  .post-body{max-width:900px;margin:0 auto;padding:4rem 3rem 6rem;}
+  .post-body h2{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:900;color:var(--blue-dark);text-transform:uppercase;margin:3rem 0 1.2rem;border-bottom:2px solid var(--surface);padding-bottom:0.5rem;}
+  .post-body h3{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:800;color:var(--blue);text-transform:uppercase;margin:2rem 0 1rem;}
+  .post-body p{font-size:1.15rem;line-height:1.8;margin-bottom:1.6rem;}
+  
+  .highlight-box{background:var(--blue-dark);clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%);padding:2rem;margin:2.5rem 0;color:#fff;}
+  .math-card{background:var(--surface);border:1px solid var(--border);padding:1.5rem;border-radius:8px;margin:2rem 0;text-align:center;}
 
-  .code-block{background:var(--blue-deep);border-left:3px solid var(--green);padding:1.5rem;margin:2rem 0;font-family:'Space Mono',monospace;font-size:0.85rem;color:rgba(255,255,255,0.9);line-height:1.6;overflow-x:auto;white-space:pre;border-radius:0 4px 4px 0;}
+  .code-block{background:var(--blue-deep);border-left:4px solid var(--green);padding:1.5rem;margin:2rem 0;font-family:'Space Mono',monospace;font-size:0.9rem;color:#e4f0ff;overflow-x:auto;}
 
-  .tag-list{display:flex;flex-wrap:wrap;gap:0.5rem;margin:2.5rem 0;}
-  .tag{font-family:'Space Mono',monospace;font-size:0.62rem;padding:0.35rem 0.8rem;background:var(--surface);border:1px solid var(--border);color:var(--blue);text-transform:uppercase;letter-spacing:0.06em;}
+  .tag-list{display:flex;flex-wrap:wrap;gap:0.5rem;margin:2rem 0;}
+  .tag{font-family:'Space Mono',monospace;font-size:0.65rem;padding:0.4rem 1rem;background:var(--surface);border:1px solid var(--border);color:var(--blue);text-transform:uppercase;}
 
-  .nav-back{margin-top:4rem;padding-top:2rem;border-top:2px solid var(--border);}
-  .btn-back{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--blue);text-decoration:none;text-transform:uppercase;letter-spacing:0.05em;transition:transform 0.2s;}
-  .btn-back:hover{transform:translateX(-5px);}
-
-  /* FOOTER */
-  footer{background:#040e22;padding:3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
-  .fl{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;color:#fff;}
-  .fl span{color:var(--green);}
-  footer p{font-family:'Space Mono',monospace;font-size:0.66rem;color:rgba(255,255,255,0.3);}
-
-  @media(max-width:900px){nav ul{display:none;}nav{padding:0 1.5rem;}.post-hero,.post-body{padding-left:1.5rem;padding-right:1.5rem;}}
+  footer{background:#040e22;padding:3rem;text-align:center;color:#fff;}
+  .btn-back{display:inline-block;margin-top:3rem;color:var(--blue);text-decoration:none;font-weight:700;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;}
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo"><span class="nav-dot"></span>GAIA <span class="g">ROBÓTICA</span></a>
-  <ul>
-    <li><a href="index.html#sobre">Sobre</a></li>
-    <li><a href="aprenda.html">Aprenda</a></li>
-    <li><a href="index.html#contato">Contato</a></li>
-  </ul>
+  <a href="aprenda.html" class="nav-logo"><span class="nav-dot"></span>GAIA <span class="g">ROBÓTICA</span></a>
 </nav>
 
 <div class="post-hero">
   <div class="hero-inner">
-    <div class="breadcrumb"><a href="index.html">Home</a> › <a href="aprenda.html">Aprenda</a> › IA</div>
-    <div class="post-cat">Inteligência Artificial</div>
+    <div class="post-cat">Sistemas Inteligentes</div>
     <h1>O que é Inteligência Artificial?</h1>
-    <div class="post-meta">
-      <span>Março de 2026</span>
-      <span>•</span>
-      <span>5 min de leitura</span>
-    </div>
+    <p style="color:rgba(255,255,255,0.7)">Do conceito de Turing à Visão Computacional nos nossos Robôs.</p>
   </div>
 </div>
 
 <div class="post-body">
-  <p>Você provavelmente interage com uma Inteligência Artificial (IA) dezenas de vezes por dia: ao desbloquear o celular com o rosto ou ao ver uma recomendação de música. Mas, na <strong>GAIA Robótica</strong>, olhamos para a IA como uma poderosa ferramenta de engenharia para resolver problemas complexos.</p>
+  <p>Na Engenharia, muitas vezes lidamos com sistemas determinísticos: se conhecemos a entrada e a função de transferência, prevemos a saída. Mas como programar um robô para reconhecer um rosto ou desviar de um obstáculo em movimento? A <strong>Inteligência Artificial (IA)</strong> é a resposta para problemas onde as regras são complexas demais para serem escritas manualmente.</p>
 
-  <div class="highlight-box">
-    <p><strong>A definição real:</strong> IA é a capacidade de um sistema computacional de simular processos de inteligência humana, como aprender com a experiência e reconhecer padrões para tomar decisões autônomas.</p>
+  <h2>1. A Mudança de Paradigma</h2>
+  <p>Na programação tradicional, o programador cria o <strong>algoritmo</strong>. Na IA, o programador cria um <strong>modelo</strong> capaz de aprender o algoritmo a partir de dados.</p>
+  
+  
+
+  <h3>Aprendizado Supervisionado</h3>
+  <p>É como ensinar uma criança: você mostra uma foto de um drone e diz "isso é um drone". Após milhares de exemplos, o modelo identifica padrões (bordas, hélices, cores) que definem o objeto. Matematicamente, estamos tentando encontrar uma função $f(x)$ tal que $f(Input) \approx Output$.</p>
+
+  <h2>2. O Neurônio Artificial (Perceptron)</h2>
+  <p>A unidade básica de quase toda IA moderna é inspirada na biologia, mas funciona como um somador ponderado. Imagine que cada entrada do sensor ($x$) tem um "peso" ($w$) que define sua importância.</p>
+  
+  <div class="math-card">
+    <p>A saída do neurônio é dada por:</p>
+    $$y = \phi \left( \sum_{i=1}^{n} w_i x_i + b \right)$$
+    <p><small>Onde $\phi$ é a <strong>função de ativação</strong> (como ReLU ou Sigmoid) e $b$ é o bias.</small></p>
   </div>
 
-  <h2>1. Programação Tradicional vs. IA</h2>
-  <p>Na programação comum (como um script de Arduino), o engenheiro escreve as regras explicitamente. Na IA, nós invertemos a ordem: damos os <strong>dados</strong> e o <strong>resultado esperado</strong>, e o computador "descobre" a regra matemática.</p>
-  
   
 
-  <div class="code-block">
-// Programação Comum: Regras fixas
-if (sensor_distancia < 10) {
-    parar_motor();
-}</div>
+  <p>Quando empilhamos milhares desses neurônios em camadas, temos as <strong>Redes Neurais Profundas (Deep Learning)</strong>, capazes de processar desde sinais de áudio até vídeos em tempo real.</p>
 
-  <h2>2. Como a IA "Aprende"?</h2>
-  <p>A base da IA moderna é o <strong>Machine Learning</strong>. No fundo, é matemática pura. Um neurônio artificial calcula uma soma ponderada de suas entradas e aplica uma função de ativação:</p>
-
-  <p style="text-align:center; background:var(--surface); padding:1.5rem; border-radius:8px; margin:2rem 0; font-size:1.2rem;">
-    $$y = \sigma \left( \sum_{i=1}^{n} w_i x_i + b \right)$$
-  </p>
+  <h2>3. Como a IA Realmente "Aprende"?</h2>
+  <p>O "aprendizado" nada mais é do que um problema de <strong>otimização</strong>. O modelo começa com pesos aleatórios e erra muito. Calculamos o erro através de uma <strong>Função de Perda (Loss Function)</strong>.</p>
+  
+  <div class="highlight-box">
+    <h3 style="color:var(--green); margin-top:0;">Otimização por Gradiente</h3>
+    <p>Para diminuir o erro, usamos o <strong>Gradiente Descendente</strong>. Calculamos a derivada do erro em relação aos pesos e os ajustamos na direção oposta ao erro. É como descer uma montanha no escuro seguindo a inclinação do terreno.</p>
+    <p style="text-align:center; font-size:1.3rem; margin-top:1rem;">$$w_{new} = w_{old} - \eta \cdot \nabla J(w)$$</p>
+  </div>
 
   
 
-  <h2>3. Aplicações no GAIA</h2>
-  <p>No nosso projeto de extensão na <strong>UFTM</strong>, usamos IA para transformar máquinas em agentes inteligentes:</p>
+  <h2>4. IA no Contexto do GAIA Robótica</h2>
+  <p>No projeto de extensão da <strong>UFTM</strong>, não usamos IA apenas para bater papo. Nós a aplicamos em sistemas físicos:</p>
+  
   <ul>
-    <li><strong>Visão Computacional:</strong> Identificação de alvos para pouso de drones.</li>
-    <li><strong>Navegação:</strong> Desvio de obstáculos em ambientes desconhecidos.</li>
-    <li><strong>Sinais:</strong> Filtragem inteligente de ruídos em sensores de telemetria.</li>
+    <li><strong>Visão Computacional:</strong> Usamos redes neurais convolucionais (CNNs) para que o drone identifique o alvo da SAE Brasil em milissegundos.</li>
+    <li><strong>Fusão de Sensores:</strong> Filtros inteligentes que decidem em qual sensor confiar (GPS ou acelerômetro) quando o sinal está ruidoso.</li>
+    <li><strong>SLAM (Navegação):</strong> Criação de mapas em tempo real onde o robô "entende" onde estão as paredes e obstáculos.</li>
   </ul>
 
+  <div class="code-block">
+# Exemplo de inferência simples em Python/TensorFlow
+import tensorflow as tf
+
+model = tf.keras.models.load_model('drone_vision_model.h5')
+prediction = model.predict(camera_frame)
+
+if prediction > 0.9:
+    print("Alvo detectado! Iniciando aproximação.")
+</div>
+
+  <h2>5. Conclusão</h2>
+  <p>A IA não é mágica; é <strong>cálculo e estatística</strong> aplicados em larga escala. No GAIA, nosso objetivo é dominar essas ferramentas para criar robôs mais autônomos, seguros e eficientes.</p>
+
   <div class="tag-list">
-    <span class="tag">Machine Learning</span>
     <span class="tag">Engenharia Elétrica</span>
-    <span class="tag">Deep Learning</span>
+    <span class="tag">Machine Learning</span>
     <span class="tag">UFTM</span>
+    <span class="tag">Robótica Autônoma</span>
+    <span class="tag">Redes Neurais</span>
   </div>
 
-  <div class="nav-back">
-    <a href="aprenda.html" class="btn-back">← Voltar para a lista de artigos</a>
-  </div>
+  <a href="aprenda.html" class="btn-back">← Voltar para os artigos</a>
 </div>
 
 <footer>
-  <div class="fl">GAIA <span>ROBÓTICA</span></div>
-  <p>Projeto de Extensão · UFTM · Uberaba, MG</p>
+  <div style="font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:1.5rem;">GAIA <span style="color:var(--green)">ROBÓTICA</span></div>
+  <p style="font-family:'Space Mono',monospace; font-size:0.7rem; opacity:0.4; margin-top:0.5rem;">UFTM · Uberaba, MG · 2026</p>
 </footer>
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
