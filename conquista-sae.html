@@ -105,6 +105,19 @@
     .carousel-slide { height: 300px; }
   }
 </style>
+
+<script>
+  function handleImageError(img) {
+    if (img.dataset.retried) return;
+    img.dataset.retried = "true";
+    let currentSrc = img.getAttribute('src');
+    if (currentSrc.endsWith('.jpg')) {
+      img.src = currentSrc.replace('.jpg', '.JPG');
+    } else if (currentSrc.endsWith('.JPG')) {
+      img.src = currentSrc.replace('.JPG', '.jpg');
+    }
+  }
+</script>
 </head>
 <body>
 
@@ -135,7 +148,7 @@
     <article class="article-content-main">
       
       <div class="main-image">
-        <img src="Drone.png" alt="Drone GAIA Eletroquad na pista de decolagem">
+        <img src="IMG_6749.jpg" alt="Drone GAIA Eletroquad em detalhes" onerror="handleImageError(this)">
       </div>
       
       <div class="article-content">
@@ -148,7 +161,7 @@
         <h2>Os Dias de Competição</h2>
         <p>Durante o evento, a pressão era constante. A competição exigia não apenas que o drone voasse, mas que operasse com autonomia, navegasse por coordenadas, reconhecesse alvos no solo e realizasse o acionamento de mecanismos (como a nossa garra mecânica) no tempo exato. A estabilidade do sinal de telemetria e o ajuste fino do controle PID sob condições climáticas adversas foram os nossos maiores desafios em campo.</p>
 
-        <img src="Preparosparaacompeticao.png" class="inline-img" alt="Equipe preparando o drone e ajustando o código na bancada">
+        <img src="Preparosparaacompeticao.JPG" class="inline-img" alt="Equipe preparando o drone e ajustando o código na bancada" onerror="handleImageError(this)">
         <p style="text-align: center; font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--muted); margin-top: -1rem; margin-bottom: 2rem;">Ajuste fino de código e calibração de hardware momentos antes do voo oficial.</p>
 
         <div class="carousel-wrap">
@@ -156,9 +169,18 @@
           <div class="carousel-container">
             <button class="carousel-btn prev">&#10094;</button>
             <div class="carousel-track">
-              <img src="terceirolugar.png" class="carousel-slide" alt="Equipe celebrando o 3º lugar com o cheque">
-              <img src="Júlia%20e%20Wanessa.png" class="carousel-slide" alt="Júlia e Wanessa">
-              <img src="membrosdogaiacomodroneeletroquad.png" class="carousel-slide" alt="Equipe completa na Embraer">
+              <img src="IMG_7491.jpg" class="carousel-slide" alt="Equipe celebrando o 3º lugar" onerror="handleImageError(this)">
+              <img src="IMG_7527.jpg" class="carousel-slide" alt="Equipe com a van" onerror="handleImageError(this)">
+              <img src="IMG_7522.jpg" class="carousel-slide" alt="Meninas com o cheque" onerror="handleImageError(this)">
+              <img src="Júlia%20e%20Wanessa.jpg" class="carousel-slide" alt="Júlia e Wanessa" onerror="handleImageError(this)">
+              <img src="IMG_7431.jpg" class="carousel-slide" alt="Meninas com o drone" onerror="handleImageError(this)">
+              <img src="IMG_7633.JPG" class="carousel-slide" alt="Inspeção técnica do Drone" onerror="handleImageError(this)">
+              <img src="IMG_7627.JPG" class="carousel-slide" alt="Trabalhando no drone" onerror="handleImageError(this)">
+              <img src="IMG_7628.JPG" class="carousel-slide" alt="Equipe concentrada" onerror="handleImageError(this)">
+              <img src="IMG_7630.JPG" class="carousel-slide" alt="Conversa com equipe" onerror="handleImageError(this)">
+              <img src="IMG_7631.JPG" class="carousel-slide" alt="Alinhamento da equipe" onerror="handleImageError(this)">
+              <img src="36c0bbb2-fe29-4cf1-8b6a-4308d20f6b08.jpg" class="carousel-slide" alt="Visita técnica à Embraer" onerror="handleImageError(this)">
+              <img src="IMG_3194.jpg" class="carousel-slide" alt="Palco e encerramento" onerror="handleImageError(this)">
             </div>
             <button class="carousel-btn next">&#10095;</button>
           </div>
@@ -189,7 +211,7 @@
         <h2>O Impacto do Pódio</h2>
         <p>Essa vitória impulsiona o GAIA Robótica para um novo patamar dentro e fora da UFTM. Mostrou à comunidade acadêmica a capacidade da equipe de trabalhar com o estado da arte em sistemas de voo autônomo e abre portas para parcerias com indústrias do setor de inovação e agronegócio no Triângulo Mineiro.</p>
         
-        <img src="Equipe.png" class="inline-img" alt="Equipe GAIA Robótica reunida celebrando">
+        <img src="Equipe.JPG" class="inline-img" alt="Equipe GAIA Robótica reunida celebrando" onerror="handleImageError(this)">
         <p style="text-align: center; font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--muted); margin-top: -1rem;">A equipe reunida: o motor humano por trás do projeto autônomo.</p>
 
       </div>
