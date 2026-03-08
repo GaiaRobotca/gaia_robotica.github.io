@@ -103,7 +103,18 @@
   .flinks a{font-family:'Space Mono',monospace;font-size:0.66rem;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.2s;}
   .flinks a:hover{color:var(--green);}
 
-  @media(max-width:900px){nav ul{display:none;}nav{padding:0 1.5rem;}.nums,.cotas,.why-grid{grid-template-columns:1fr 1fr;}.page-hero,.sec{padding-left:1.5rem;padding-right:1.5rem;}.contact-grid{grid-template-columns:1fr;gap:2rem;}}
+  /* RESPONSIVE & MOBILE MENU */
+  .menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; color: var(--blue-dark); cursor: pointer; }
+
+  @media(max-width:900px){
+    .menu-toggle { display: block; }
+    nav ul { display: none; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); padding: 2rem; border-bottom: 2px solid var(--border); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); text-align: center; }
+    nav ul.active { display: flex; }
+    nav{padding:0 1.5rem;}
+    .nums,.cotas,.why-grid{grid-template-columns:1fr 1fr;}
+    .page-hero,.sec{padding-left:1.5rem;padding-right:1.5rem;}
+    .contact-grid{grid-template-columns:1fr;gap:2rem;}
+  }
   @media(max-width:600px){.nums,.cotas,.why-grid{grid-template-columns:1fr;}}
 </style>
 </head>
@@ -111,6 +122,7 @@
 
 <nav>
   <a href="index.html" class="nav-logo"><span class="nav-dot"></span>GAIA <span class="g">ROBÓTICA</span></a>
+  <button class="menu-toggle">☰</button>
   <ul>
     <li><a href="index.html#sobre">Sobre</a></li>
     <li><a href="index.html#eletroquad">Eletroquad</a></li>
@@ -129,7 +141,6 @@
   </div>
 </div>
 
-<!-- NÚMEROS -->
 <section style="background:var(--white);">
 <div class="sec">
   <div class="sec-tag">// nosso impacto</div>
@@ -156,7 +167,6 @@
 </div>
 </section>
 
-<!-- POR QUE -->
 <section style="background:var(--surface);">
 <div class="sec">
   <div class="sec-tag">// por que apoiar</div>
@@ -197,7 +207,6 @@
 </div>
 </section>
 
-<!-- COTAS -->
 <section style="background:var(--white);">
 <div class="sec">
   <div class="sec-tag">// modalidades</div>
@@ -262,7 +271,6 @@
 </div>
 </section>
 
-<!-- CONTATO -->
 <section style="background:var(--surface);">
 <div class="sec" id="contato-form">
   <div class="sec-tag">// vamos conversar</div>
@@ -276,7 +284,7 @@
       <div class="c-links">
         <a href="https://www.instagram.com/gaia.robotica/" target="_blank" class="c-link"><span class="c-icon">📸</span>@gaia.robotica — Instagram</a>
         <a href="https://www.linkedin.com/company/gaiarobotica" target="_blank" class="c-link"><span class="c-icon">💼</span>linkedin.com/company/gaiarobotica</a>
-        <a href="mailto:gaiarobotica@uftm.edu.br" class="c-link"><span class="c-icon">✉</span>gaiarobotica@uftm.edu.br</a>
+        <a href="mailto:gaia.robotica.uftm@gmail.com" class="c-link"><span class="c-icon">✉</span>gaia.robotica.uftm@gmail.com</a>
         <a href="index.html#contato" class="c-link"><span class="c-icon">🔗</span>Formulário no site principal</a>
       </div>
     </div>
@@ -313,5 +321,16 @@
   </div>
 </footer>
 
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navMenu = document.querySelector('nav ul');
+
+  if(menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+    });
+  }
+</script>
 </body>
 </html>
