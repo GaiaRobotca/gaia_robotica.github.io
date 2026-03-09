@@ -189,8 +189,8 @@
         <p>Durante as nossas visitas às escolas de Uberaba e região, o nosso foco não é apenas fazer uma demonstração passiva, mas sim proporcionar uma experiência de <strong>aprendizado ativo</strong>. Levamos kits educacionais e robôs baseados em plataformas acessíveis (como o Arduino e LEGO EV3) para que os estudantes possam interagir fisicamente com a tecnologia.</p>
         <p>A nossa metodologia procura desmistificar a programação. Mostramos aos alunos que escrever linhas de código não é algo restrito a gênios, mas sim uma forma de ensinar uma máquina a pensar e a resolver problemas reais do dia a dia.</p>
 
-        <img src="IMG_7916.jpg" class="inline-img" alt="Robôs seguidores de linha alinhados" onerror="handleImageError(this)">
-        <p style="text-align: center; font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--muted); margin-top: -1rem; margin-bottom: 2rem;">Robôs autônomos prontos para a demonstração na pista.</p>
+        <img src="IMG_7916.jpg" class="inline-img" alt="Equipe GAIA com robôs seguidores de linha na pista" onerror="handleImageError(this)">
+        <p style="text-align: center; font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--muted); margin-top: -1rem; margin-bottom: 2rem;">Equipe GAIA com os robôs autônomos prontos para a demonstração na pista.</p>
 
         <h2>Carros de Linha: A Magia da Lógica</h2>
         <p>Uma das atividades que mais brilham os olhos dos alunos é a demonstração dos nossos <strong>robôs seguidores de linha (Line Followers)</strong>. Estes carrinhos autônomos são a introdução perfeita à robótica móvel, pois permitem visualizar o código em ação de forma imediata.</p>
@@ -295,4 +295,22 @@
     }
 
     nextButton.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateCarousel();
+    });
+
+    prevButton.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      updateCarousel();
+    });
+
+    // Auto-advance (optional)
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateCarousel();
+    }, 5000);
+  });
+</script>
+
+</body>
+</html>
